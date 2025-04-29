@@ -313,7 +313,7 @@
     
     .luxury-scroll-hint {
       position: absolute;
-      bottom: 4rem;
+      bottom: 3rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -326,13 +326,81 @@
       transition: all 0.5s var(--transition-smooth);
     }
     
+    .scroll-arrow {
+      width: 24px;
+      height: 40px;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    
+    .scroll-arrow::before,
+    .scroll-arrow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 20px;
+      background: var(--gold);
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    }
+    
+    .scroll-arrow::before {
+      left: 50%;
+      transform: translateX(-5px) rotate(45deg);
+      transform-origin: bottom center;
+    }
+    
+    .scroll-arrow::after {
+      right: 50%;
+      transform: translateX(5px) rotate(-45deg);
+      transform-origin: bottom center;
+    }
+    
     .scroll-line {
       width: 1px;
-      height: 80px;
+      height: 60px;
       background: linear-gradient(to bottom, var(--gold), transparent);
-      margin-bottom: 1.5rem;
-      animation: scrollPulse 3s infinite var(--transition-smooth);
+      opacity: 0.8;
     }
+    
+    @keyframes arrowPulse {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(10px);
+        opacity: 1;
+      }
+    }
+    
+    .scroll-arrow {
+      animation: arrowPulse 2s infinite var(--transition-smooth);
+    }
+    
+    .scroll-hint-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+      transition: all 0.5s ease;
+    }
+    
+    .luxury-scroll-hint:hover .scroll-hint-text {
+      opacity: 1;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+    
+    /* Update your HTML to use this structure:
+    <div class="luxury-scroll-hint">
+      <div class="scroll-arrow"></div>
+      <div class="scroll-line"></div>
+      <span class="scroll-hint-text">Explore</span>
+    </div>
+    */
     
     .section {
       background: rgba(20, 20, 20, 0.9);
@@ -1381,7 +1449,9 @@
     </div>
 
     <div class="luxury-scroll-hint">
+      <div class="scroll-arrow"></div>
       <div class="scroll-line"></div>
+      <span class="scroll-hint-text">Explore</span>
       <span>Explore</span>
     </div>
   </div>
@@ -1737,7 +1807,7 @@
       </div>
       <div class="promo-content">
         <p>Our 15-second YouTube commercial targets younger audiences (25-45) with quick cuts showcasing different experiences. The fast-paced editing keeps viewers engaged while highlighting our unique atmosphere.</p>
-        <p>Tagline: "Live Your Fairy Tale - The Enchanted Bastion Awaits" with a clear call-to-action to visit our website.</p>
+        <p>Tagline: "Live Your Fairy Tale - The Enchanted Bastion Awaits" with a clear invitation to visit our website.</p>
       </div>
     </div>
     
