@@ -1310,6 +1310,36 @@
     @keyframes fadeIn {
       to { opacity: 1; }
     }
+  #promotions .promo-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  #promotions.visible .promo-card {
+  opacity: 1;
+  transform: translateY(0);
+  }
+
+  #promotions.visible .promo-card:nth-child(1) {
+  transition-delay: 0.2s;
+  }
+  #promotions.visible .promo-card:nth-child(2) {
+  transition-delay: 0.4s;
+  }
+  #promotions.visible .promo-card:nth-child(3) {
+  transition-delay: 0.6s;
+  }
+
+.instagram-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4) !important;
+}
+
+.story-cell {
+  transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1) !important;
+}
+
   </style>
 </head>
 <body>
@@ -1968,12 +1998,23 @@
       });
     }
     
-    // Scroll animations with Intersection Observer
     function initScrollAnimations() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            
+            // Special handling for promotion cards
+            if (entry.target.classList.contains('promo-card')) {
+              const section = entry.target.closest('.section');
+              if (section && section.id === 'promotions') {
+                const cards = section.querySelectorAll('.promo-card');
+                cards.forEach((card, index) => {
+                  card.style.transitionDelay = `${index * 0.2}s`;
+                });
+              }
+            }
+            
             observer.unobserve(entry.target);
           }
         });
@@ -1981,9 +2022,10 @@
         threshold: 0.1,
         rootMargin: '0px 0px -100px 0px'
       });
-
-      document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(section => {
-        observer.observe(section);
+    
+      // Observe both sections and individual cards
+      document.querySelectorAll('.section-header, .department-card, .employee-summary, .promo-card').forEach(el => {
+        observer.observe(el);
       });
     }
     
@@ -1999,7 +2041,6 @@
       }
     }
     
-    // Instagram interaction effects
     function initInstagramInteractions() {
       const likeButton = document.querySelector('.like-button');
       if (!likeButton) return;
@@ -2019,7 +2060,6 @@
       // Like button functionality
       likeButton.addEventListener('click', function() {
         if (!liked) {
-          // Format the current count
           let currentCount = likeCount.textContent;
           let isK = currentCount.includes('k');
           let numericValue = parseFloat(currentCount.replace('k', ''));
@@ -2032,18 +2072,14 @@
             likeCount.textContent = numericValue;
           }
           
-          // Change heart to filled
           this.querySelector('.heart-icon').textContent = '❤️';
           liked = true;
         } else {
-          // Revert if clicked again
           this.querySelector('.heart-icon').textContent = '♡';
           liked = false;
         }
         
-        // Add animation
         this.classList.add('liked');
-        
         setTimeout(() => {
           this.classList.remove('liked');
         }, 500);
@@ -2052,36 +2088,43 @@
       // Comment button functionality
       if (commentButton) {
         commentButton.addEventListener('click', function() {
-          if (!commentsVisible) {
+          if (!commentsVisible && viewComments) {
             viewComments.click();
           }
         });
       }
-
+    
       // View comments functionality
       if (viewComments) {
-        viewComments.addEventListener('click', function() {
+        viewComments.addEventListener('click', function(e) {
+          e.preventDefault();
           commentsVisible = !commentsVisible;
-          if (commentsVisible) {
-            addComment.style.display = 'block';
-            if (commentInput) commentInput.focus();
-          } else {
-            addComment.style.display = 'none';
+          if (addComment) {
+            addComment.style.display = commentsVisible ? 'block' : 'none';
+            if (commentsVisible && commentInput) {
+              commentInput.focus();
+            }
           }
         });
       }
-
+    
       // Post comment functionality
       if (postComment && commentInput) {
-        postComment.addEventListener('click', function() {
+        postComment.addEventListener('click', function(e) {
+          e.preventDefault();
           if (commentInput.value.trim() !== '') {
             commentCountValue++;
-            if (commentCount) commentCount.textContent = commentCountValue;
+            if (commentCount) {
+              commentCount.textContent = commentCountValue;
+            }
             commentInput.value = '';
-            if (addComment) addComment.style.display = 'none';
+            if (addComment) {
+              addComment.style.display = 'none';
+            }
+            commentsVisible = false;
           }
         });
-
+    
         // Press enter to post comment
         commentInput.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
