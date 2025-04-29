@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Enchanted Bastion | Luxury Castle Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f8e8b0;
+      --gold-dark: #b38f2a;
+      --ivory: #f8f4e9;
+      --black: #121212;
+      --black-light: #1a1a1a;
+      --parchment: #f5e7d0;
+      --velvet: #3a0f0f;
+      --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+      --transition-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--ivory);
+      background-color: var(--black);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+      font-weight: 400;
+      cursor: none;
+    }
+    
+    /* Premium Gold Ring Cursor */
+    .gold-cursor {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: 
+        transform 0.1s ease-out,
+        width 0.3s var(--transition-smooth),
+        height 0.3s var(--transition-smooth),
+        border-width 0.3s ease;
+      will-change: transform;
+      mix-blend-mode: exclusion;
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+    }
+    
+    .gold-cursor::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+    
+    .cursor-hover {
+      width: 48px;
+      height: 48px;
+      border-width: 3px;
+      border-color: var(--gold-light);
+    }
+    
+    .cursor-hover::before {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0.8;
+    }
+    
+    .cursor-active {
+      width: 28px;
+      height: 28px;
+      border-width: 3px;
+      border-color: var(--gold-dark);
+    }
+    
+    /* Enhanced Preloader */
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9998;
+      transition: opacity 1s var(--transition-smooth);
+    }
+    
+    .preloader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .preloader-logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      color: var(--gold);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s var(--transition-smooth) forwards 0.3s;
+    }
+    
+    .preloader-spinner {
+      position: relative;
+      width: 60px;
+      height: 60px;
+    }
+    
+    .preloader-spinner::before,
+    .preloader-spinner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      animation: spin 2s linear infinite;
+    }
+    
+    .preloader-spinner::before {
+      border-top-color: var(--gold);
+      border-bottom-color: var(--gold);
+      animation-delay: 0.1s;
+    }
+    
+    .preloader-spinner::after {
+      border-left-color: var(--gold-light);
+      border-right-color: var(--gold-light);
+    }
+    
+    .preloader-progress {
+      width: 200px;
+      height: 2px;
+      background: rgba(212, 175, 55, 0.2);
+      margin-top: 2rem;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    
+    .preloader-progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transition: width 0.4s ease;
+    }
+    
+    /* Gold Dust Effect */
+    .gold-dust {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .dust-particle {
+      position: absolute;
+      background: var(--gold-light);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+      animation: float-dust linear infinite;
+      will-change: transform;
+    }
+    
+    /* Hero Section */
+    .luxury-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      overflow: hidden;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), 
+                  url('https://ik.imagekit.io/xeqk7r0ly/27258.jpg?updatedAt=1745518301163') center/cover no-repeat;
+      isolation: isolate;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(58,15,15,0.3) 0%, transparent 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      margin-bottom: 3rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+    
+    .luxury-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 9vw, 6.5rem);
+      line-height: 1.1;
+      margin: 0;
+      color: transparent;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s var(--transition-smooth) forwards 0.5s;
+    }
+    
+    .luxury-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+      color: var(--gold-light);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-top: 2.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s var(--transition-smooth) forwards 0.8s;
+    }
+    
+    .hero-image-wrapper {
+      position: relative;
+      width: 80%;
+      max-width: 650px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+      transform: scale(0.95);
+      opacity: 0;
+      animation: fadeInUp 1.5s var(--transition-smooth) forwards 1s;
+      will-change: transform;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s var(--transition-smooth), box-shadow 0.8s var(--transition-smooth);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    .hero-image-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.8s var(--transition-smooth);
+    }
+    
+    .luxury-hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1.05);
+      transition: transform 1s var(--transition-smooth);
+      backface-visibility: hidden;
+    }
+    
+    .image-reflection {
+      position: absolute;
+      bottom: -60%;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(to top, rgba(212, 175, 55, 0.1), transparent);
+      transform: scaleY(-1);
+      opacity: 0.4;
+      filter: blur(10px);
+      z-index: 1;
+    }
+    
+    .hero-image-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.2);
+    }
+    
+    .luxury-scroll-hint {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--gold-light);
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards 1.5s;
+      z-index: 3;
+      transition: all 0.5s var(--transition-smooth);
+    }
+    
+    .scroll-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin-bottom: 1.5rem;
+      animation: scrollPulse 3s infinite var(--transition-smooth);
+    }
+    
+    .section {
+      background: rgba(20, 20, 20, 0.9);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 5rem auto;
+      max-width: 1000px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s var(--transition-smooth);
+      will-change: transform, opacity;
+    }
+    
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .section h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.8s var(--transition-smooth);
+    }
+    
+    .section.visible h2::after {
+      transform: scaleX(1);
+    }
+    
+    /* Promo Cards */
+    .promo-card {
+      background: rgba(30, 30, 30, 0.7);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.6s var(--transition-smooth);
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    
+    .section.visible .promo-card {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .section.visible .promo-card:nth-child(1) {
+      transition-delay: 0.2s;
+    }
+    
+    .section.visible .promo-card:nth-child(2) {
+      transition-delay: 0.4s;
+    }
+    
+    .section.visible .promo-card:nth-child(3) {
+      transition-delay: 0.6s;
+    }
+    
+    .promo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+    
+    .promo-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .promo-icon {
+      font-size: 2.5rem;
+      margin-right: 1.5rem;
+      color: var(--gold);
+    }
+    
+    .promo-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.8rem;
+    }
+    
+    .promo-subtitle {
+      font-style: italic;
+      color: var(--ivory);
+      opacity: 0.8;
+    }
+    
+    .promo-image {
+      width: 100%;
+      border-radius: 8px;
+      margin: 1rem 0;
+      transition: transform 0.6s var(--transition-smooth);
+      transform-origin: center;
+    }
+    
+    .promo-card:hover .promo-image {
+      transform: scale(1.02);
+    }
+    
+    .promo-content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--parchment);
+    }
+    
+    /* Storyboard */
+    .storyboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .story-cell {
+      background: rgba(40, 40, 40, 0.7);
+      border-radius: 6px;
+      padding: 1rem;
+      transition: all 0.6s var(--transition-smooth);
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    
+    .section.visible .story-cell {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .story-cell:nth-child(1) { transition-delay: 0.2s; }
+    .story-cell:nth-child(2) { transition-delay: 0.3s; }
+    .story-cell:nth-child(3) { transition-delay: 0.4s; }
+    .story-cell:nth-child(4) { transition-delay: 0.5s; }
+    .story-cell:nth-child(5) { transition-delay: 0.6s; }
+    .story-cell:nth-child(6) { transition-delay: 0.7s; }
+    
+    .story-cell:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+    .story-image {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      transition: transform 0.6s var(--transition-smooth);
+    }
+    
+    .story-cell:hover .story-image {
+      transform: scale(1.05);
+    }
+    
+    .story-caption {
+      font-size: 0.9rem;
+      text-align: center;
+      color: var(--parchment);
+    }
+    
+    /* Instagram Card */
+    .instagram-card {
+      background: rgba(25, 25, 25, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transition: transform 0.6s var(--transition-smooth), box-shadow 0.6s var(--transition-smooth);
+    }
+    
+    .instagram-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+    
+    .social-post {
+      background: rgba(40, 40, 40, 0.8);
+      border-radius: 12px;
+      padding: 0;
+      max-width: 500px;
+      margin: 1.5rem auto;
+      overflow: hidden;
+    }
+    
+    .social-header {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 12px;
+      background: rgba(30, 30, 30, 0.9);
+    }
+    
+    .social-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .social-avatar:hover {
+      transform: scale(1.1);
+    }
+    
+    .social-user {
+      flex: 1;
+    }
+    
+    .username {
+      font-weight: 600;
+      color: var(--ivory);
+      font-size: 0.95rem;
+    }
+    
+    .location {
+      font-size: 0.8rem;
+      color: var(--gold);
+      opacity: 0.8;
+    }
+    
+    .more-options {
+      color: var(--ivory);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .more-options:hover {
+      transform: rotate(90deg);
+    }
+    
+    .post-image {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s var(--transition-smooth);
+    }
+    
+    .instagram-card:hover .post-image {
+      transform: scale(1.02);
+    }
+    
+    .post-actions {
+      display: flex;
+      padding: 8px 16px;
+      gap: 18px;
+      align-items: center;
+      background: rgba(30, 30, 30, 0.9);
+    }
+    
+    .action-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px;
+      transition: all 0.3s ease;
+    }
+    
+    .action-icon {
+      font-size: 1.4rem;
+      color: var(--ivory);
+      transition: all 0.3s ease;
+    }
+    
+    .action-count {
+      font-size: 0.9rem;
+      color: var(--ivory);
+      font-family: 'EB Garamond', serif;
+    }
+    
+    .like-button:hover .heart-icon,
+    .like-button.liked .heart-icon {
+      color: #ff3757;
+    }
+    
+    .like-button.liked .heart-icon {
+      animation: heartPop 0.5s;
+    }
+    
+    .comment-button:hover .action-icon {
+      color: var(--gold);
+    }
+    
+    .share-button:hover .action-icon {
+      color: var(--gold);
+    }
+    
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.3); }
+      50% { transform: scale(0.8); }
+      75% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    .save-button {
+      margin-left: auto;
+    }
+    
+    .save-button:hover .action-icon {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+    
+    .post-caption {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--ivory);
+      background: rgba(30, 30, 30, 0.9);
+    }
+    
+    .caption-username {
+      font-weight: 600;
+      margin-right: 4px;
+      color: var(--ivory);
+      transition: color 0.3s ease;
+    }
+    
+    .caption-username:hover {
+      color: var(--gold);
+    }
+    
+    .post-details {
+      padding: 0 16px 16px;
+      font-size: 0.8rem;
+      color: rgba(248, 244, 233, 0.6);
+      border-top: 1px solid rgba(212, 175, 55, 0.1);
+      padding-top: 12px;
+      background: rgba(30, 30, 30, 0.9);
+    }
+    
+    .post-time {
+      margin-bottom: 8px;
+    }
+    
+    .view-comments {
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .view-comments:hover {
+      color: var(--gold);
+    }
+
+    /* Staff Section */
+.staff-section {
+  position: relative;
+  padding: 10rem 2rem;
+  background: 
+    linear-gradient(135deg, rgba(58,15,15,0.15) 0%, transparent 50%),
+    linear-gradient(to bottom, rgba(10,10,10,0.98), rgba(0,0,0,0.95));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.staff-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.03) 0%, transparent 30%);
+  z-index: -1;
+}
+
+.staff-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s var(--transition-smooth);
+}
+
+.section-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.section-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--parchment);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.employee-structure {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+}
+
+.department-card {
+  background: linear-gradient(145deg, rgba(35,35,35,0.8), rgba(25,25,25,0.9));
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 0.6s var(--transition-smooth);
+  transform: translateY(30px) scale(0.98);
+  opacity: 0;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 10px 30px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.department-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.department-card.visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.department-card:nth-child(1) { transition-delay: 0.1s; }
+.department-card:nth-child(2) { transition-delay: 0.2s; }
+.department-card:nth-child(3) { transition-delay: 0.3s; }
+.department-card:nth-child(4) { transition-delay: 0.4s; }
+.department-card:nth-child(5) { transition-delay: 0.5s; }
+.department-card:nth-child(6) { transition-delay: 0.6s; }
+
+.department-card:hover {
+  transform: translateY(-15px) translateZ(30px) scale(1.02);
+  box-shadow: 
+    0 25px 60px rgba(0,0,0,0.5), 
+    0 0 0 1px rgba(212, 175, 55, 0.25),
+    inset 0 0 30px rgba(212, 175, 55, 0.05);
+  background: linear-gradient(145deg, rgba(40,40,40,0.8), rgba(30,30,30,0.9));
+}
+
+.department-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.department-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.department-icon {
+  font-size: 2.2rem;
+  margin-right: 1.5rem;
+  color: var(--gold);
+  min-width: 40px;
+  text-align: center;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+}
+
+.department-title {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.employee-count {
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  opacity: 0.9;
+  margin-left: auto;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.2));
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.employee-list {
+  list-style-type: none;
+  margin-bottom: 2rem;
+}
+
+.employee-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.1);
+  transition: all 0.3s ease;
+}
+
+.employee-item:hover {
+  transform: translateX(5px);
+  border-bottom-color: rgba(212, 175, 55, 0.3);
+}
+
+.employee-item:last-child {
+  border-bottom: none;
+}
+
+.position {
+  color: var(--ivory);
+  flex: 1;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+.count {
+  color: var(--gold);
+  font-weight: 600;
+  width: 50px;
+  text-align: right;
+  font-feature-settings: "tnum";
+}
+
+.salary {
+  color: var(--parchment);
+  width: 100px;
+  text-align: right;
+  font-size: 0.9em;
+  font-feature-settings: "tnum";
+  opacity: 0.9;
+}
+
+.benefits {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(212, 175, 55, 0.2);
+}
+
+.benefits-title {
+  color: var(--gold);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  align-items: center;
+}
+
+.benefits-title::before,
+.benefits-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  margin: 0 1rem;
+}
+
+.benefits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  list-style-type: none;
+}
+
+.benefit-item {
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.15));
+  color: var(--parchment);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.benefit-item:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.2));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.department-notes {
+  font-size: 0.85rem;
+  color: var(--parchment);
+  opacity: 0.7;
+  margin-top: 1.5rem;
+  font-style: italic;
+  padding: 0.8rem;
+  background: rgba(20,20,20,0.4);
+  border-left: 2px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+}
+
+.employee-summary {
+  margin-top: 4rem;
+  padding: 3rem;
+  background: linear-gradient(145deg, rgba(35,35,35,0.8), rgba(25,25,25,0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transform: translateY(30px) scale(0.98);
+  opacity: 0;
+  transition: all 0.8s var(--transition-smooth);
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.4),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.employee-summary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 70% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 30%),
+    linear-gradient(135deg, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.employee-summary.visible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.employee-summary h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--gold);
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.employee-summary h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.summary-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(20,20,20,0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  transition: all 0.4s ease;
+}
+
+.summary-item:hover {
+  transform: translateY(-5px);
+  background: rgba(25,25,25,0.5);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.summary-value {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.8rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.summary-label {
+  font-size: 0.95rem;
+  color: var(--parchment);
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 300;
+}
+
+.salary-stats {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+}
+
+.salary-stat {
+  background: linear-gradient(145deg, rgba(40,40,40,0.7), rgba(30,30,30,0.8));
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  transition: all 0.4s ease;
+}
+
+.salary-stat:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+.salary-stat-title {
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.salary-stat-value {
+  font-size: 1.8rem;
+  color: var(--ivory);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Floating decorative elements */
+.floating-ornament {
+  position: absolute;
+  opacity: 0.05;
+  z-index: -1;
+  filter: drop-shadow(0 0 5px var(--gold));
+}
+
+.floating-ornament:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  font-size: 8rem;
+  animation: float 15s ease-in-out infinite;
+}
+
+.floating-ornament:nth-child(2) {
+  bottom: 15%;
+  right: 5%;
+  font-size: 6rem;
+  animation: float 18s ease-in-out infinite reverse;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .employee-structure {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .staff-section {
+    padding: 7rem 1.5rem;
+  }
+  
+  .department-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .employee-summary {
+    padding: 2rem 1.5rem;
+  }
+  
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .salary-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .employee-structure {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-grid,
+  .salary-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .department-header {
+    flex-wrap: wrap;
+  }
+  
+  .employee-count {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: left;
+  }
+}
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 50%;
+      filter: blur(1px);
+      z-index: -1;
+      animation: float-element linear infinite;
+      will-change: transform;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 1200px) {
+      .hero-image-wrapper {
+        width: 85%;
+      }
+      
+      .marketing-functions {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .luxury-hero {
+        min-height: 100vh;
+        padding: 1.5rem;
+      }
+      
+      .hero-image-wrapper {
+        width: 95%;
+      }
+      
+      .luxury-title {
+        font-size: clamp(2.8rem, 10vw, 5.5rem);
+      }
+      
+      .luxury-subtitle {
+        letter-spacing: 0.15em;
+      }
+      
+      .marketing-section {
+        padding: 5rem 1rem;
+      }
+      
+      .marketing-functions {
+        grid-template-columns: 1fr;
+      }
+      
+      .strategy-item {
+        flex-wrap: wrap;
+      }
+      
+      .strategy-name, .strategy-detail {
+        width: 100%;
+        text-align: left;
+      }
+      
+      .strategy-detail {
+        margin-top: 0.5rem;
+      }
+      
+      .marketing-summary {
+        padding: 2rem 1rem;
+      }
+      
+      .summary-grid {
+        gap: 1.5rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(40px, -40px) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+    
+    @keyframes float-element {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(15px, -15px) rotate(10deg); }
+    }
+    
+    @keyframes float-dust {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translate(80px, -100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.8; transform: translateY(0); height: 70px; }
+      50% { opacity: 1; transform: translateY(20px); height: 80px; }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Gold Ring Cursor -->
+  <div class="gold-cursor"></div>
+  
+  <!-- Preloader -->
+  <div class="preloader">
+    <div class="preloader-logo">The Enchanted Bastion</div>
+    <div class="preloader-spinner"></div>
+    <div class="preloader-progress">
+      <div class="preloader-progress-bar"></div>
+    </div>
+  </div>
+  
+  <!-- Gold Dust Effect -->
+  <div class="gold-dust" id="goldDust"></div>
+  
+  <!-- Hero Section -->
+  <div class="luxury-hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1 class="luxury-title">The Enchanted Bastion</h1>
+      <p class="luxury-subtitle">LOIRE VALLEY, FRANCE</p>
+    </div>
+
+    <div class="hero-image-wrapper" id="heroImageWrapper">
+      <div class="hero-image-inner">
+        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20Create%20a%20photorealistic%208K%20sunset%20view%20of%20a%20luxurious%2012th-century%20castle%20hotel%20in%20France's%20.jpg" 
+             alt="The Enchanted Bastion luxury castle hotel" 
+             class="luxury-hero-image"
+             loading="eager"
+             width="1400"
+             height="900">
+        <div class="image-reflection"></div>
+        <div class="hero-image-frame"></div>
+      </div>
+    </div>
+
+    <div class="luxury-scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Explore</span>
+    </div>
+  </div>
+  
+  <!-- Marketing Section -->
+  <section class="staff-section">
+    <div class="staff-container">
+      <div class="section-header">
+        <h2 class="section-title">Staff</h2>
+        <p class="section-subtitle">Our dedicated staff of 136 people, ensuring the highest quality for all of our guests.</p>
+      </div>
+      
+      <div class="employee-structure">
+        <!-- Front Office -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">🏨</div>
+            <div class="department-title">Front Office</div>
+            <div class="employee-count">24 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Front Desk Manager</span>
+              <span class="count">2</span>
+              <span class="salary">€65,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Front Desk Agents</span>
+              <span class="count">14</span>
+              <span class="salary">€42,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Concierge</span>
+              <span class="count">4</span>
+              <span class="salary">€48,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Bell Services</span>
+              <span class="count">4</span>
+              <span class="salary">€38,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Commission on upgrades</li>
+              <li class="benefit-item">Quarterly bonuses</li>
+              <li class="benefit-item">Language training</li>
+            </ul>
+          </div>
+          <p class="department-notes">24/7 coverage with increased staffing during peak hours (7-10am, 4-8pm)</p>
+        </div>
+        
+        <!-- Housekeeping -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">🧹</div>
+            <div class="department-title">Housekeeping</div>
+            <div class="employee-count">42 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Executive Housekeeper</span>
+              <span class="count">1</span>
+              <span class="salary">€58,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Floor Supervisors</span>
+              <span class="count">5</span>
+              <span class="salary">€45,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Room Attendants</span>
+              <span class="count">32</span>
+              <span class="salary">€36,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Laundry Staff</span>
+              <span class="count">4</span>
+              <span class="salary">€34,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Performance bonuses</li>
+              <li class="benefit-item">Health insurance</li>
+              <li class="benefit-item">Uniform allowance</li>
+            </ul>
+          </div>
+          <p class="department-notes">15-30 minutes per room, 8 rooms per attendant per shift at 90% occupancy</p>
+        </div>
+        
+        <!-- Food & Beverage -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">🍽️</div>
+            <div class="department-title">Food & Beverage</div>
+            <div class="employee-count">28 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Executive Chef</span>
+              <span class="count">1</span>
+              <span class="salary">€85,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Sous Chefs</span>
+              <span class="count">3</span>
+              <span class="salary">€62,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Line Cooks</span>
+              <span class="count">4</span>
+              <span class="salary">€48,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Servers</span>
+              <span class="count">10</span>
+              <span class="salary">€42,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Bartenders</span>
+              <span class="count">4</span>
+              <span class="salary">€45,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Support Staff</span>
+              <span class="count">6</span>
+              <span class="salary">€38,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Tips pool</li>
+              <li class="benefit-item">Wine training</li>
+              <li class="benefit-item">Meal allowances</li>
+            </ul>
+          </div>
+          <p class="department-notes">Includes restaurant, bar, room service, and breakfast service</p>
+        </div>
+        
+        <!-- Guest Services -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">✨</div>
+            <div class="department-title">Guest Services</div>
+            <div class="employee-count">24 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Guest Services Manager</span>
+              <span class="count">1</span>
+              <span class="salary">€68,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Valet Parking</span>
+              <span class="count">6</span>
+              <span class="salary">€40,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Spa Therapists</span>
+              <span class="count">6</span>
+              <span class="salary">€52,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Activity Coordinators</span>
+              <span class="count">4</span>
+              <span class="salary">€45,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Business Center</span>
+              <span class="count">4</span>
+              <span class="salary">€48,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Specialty Attendants</span>
+              <span class="count">4</span>
+              <span class="salary">€42,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Commission on services</li>
+              <li class="benefit-item">Certification programs</li>
+              <li class="benefit-item">Wellness benefits</li>
+            </ul>
+          </div>
+          <p class="department-notes">Includes horseback riding, tennis, golf, and other luxury amenities</p>
+        </div>
+        
+        <!-- Maintenance -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">🔧</div>
+            <div class="department-title">Maintenance</div>
+            <div class="employee-count">10 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Chief Engineer</span>
+              <span class="count">1</span>
+              <span class="salary">€72,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Technicians</span>
+              <span class="count">5</span>
+              <span class="salary">€52,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Landscapers</span>
+              <span class="count">4</span>
+              <span class="salary">€45,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Tool allowances</li>
+              <li class="benefit-item">Overtime pay</li>
+              <li class="benefit-item">Safety bonuses</li>
+            </ul>
+          </div>
+          <p class="department-notes">Covers castle maintenance, HVAC, plumbing, electrical, and groundskeeping</p>
+        </div>
+        
+        <!-- Security -->
+        <div class="department-card">
+          <div class="department-header">
+            <div class="department-icon">🛡️</div>
+            <div class="department-title">Security</div>
+            <div class="employee-count">8 Staff</div>
+          </div>
+          <ul class="employee-list">
+            <li class="employee-item">
+              <span class="position">Security Director</span>
+              <span class="count">1</span>
+              <span class="salary">€75,000</span>
+            </li>
+            <li class="employee-item">
+              <span class="position">Security Officers</span>
+              <span class="count">7</span>
+              <span class="salary">€55,000</span>
+            </li>
+          </ul>
+          <div class="benefits">
+            <div class="benefits-title">Key Benefits</div>
+            <ul class="benefits-list">
+              <li class="benefit-item">Hazard pay</li>
+              <li class="benefit-item">Retirement matching</li>
+              <li class="benefit-item">Fitness stipend</li>
+            </ul>
+          </div>
+          <p class="department-notes">24/7 coverage with CCTV monitoring and patrols of the 15-acre property</p>
+        </div>
+      </div>
+      
+      <div class="employee-summary">
+        <h3>Staffing Summary</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-value">1.56</div>
+            <div class="summary-label">Employees Per Room</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-value">136</div>
+            <div class="summary-label">Total Employees</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-value">24/7</div>
+            <div class="summary-label">Essential Services</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-value">3:1</div>
+            <div class="summary-label">Guest to Staff Ratio</div>
+          </div>
+        </div>
+        
+        <div class="salary-stats">
+          <div class="salary-stat">
+            <div class="salary-stat-title">Average Salary</div>
+            <div class="salary-stat-value">€48,750</div>
+          </div>
+          <div class="salary-stat">
+            <div class="salary-stat-title">Annual Payroll</div>
+            <div class="salary-stat-value">€6.63 million</div>
+          </div>
+          <div class="salary-stat">
+            <div class="salary-stat-title">Benefits Budget</div>
+            <div class="salary-stat-value">€1.2 million</div>
+          </div>
+          <div class="salary-stat">
+            <div class="salary-stat-title">Training Budget</div>
+            <div class="salary-stat-value">€350,000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="promotions">
+    <h2>Experience the Magic</h2>
+    
+    <div class="promo-card">
+      <div class="promo-header">
+        <div class="promo-icon">📰</div>
+        <div>
+          <div class="promo-title">Luxury Travel Magazine</div>
+          <div class="promo-subtitle">For the discerning traveler</div>
+        </div>
+      </div>
+      <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20Full-page%20luxury%20travel%20magazine%20advertisement%20featuring%20The%20Enchanted%20Bastion%20castle%20at%20twi%20(2).jpg" alt="Magazine Ad" class="promo-image" loading="lazy">
+      <div class="promo-content">
+        <p>Our full-page spread in Luxury Travel Magazine showcases the timeless elegance of The Enchanted Bastion. The ad features stunning twilight photography of the castle, highlighting our unique blend of medieval architecture and modern luxury amenities.</p>
+        <p>The copy emphasizes our exclusive wine cellar experiences and private vineyard tours, targeting affluent travelers aged 35-65 who value heritage and authenticity in their luxury experiences.</p>
+      </div>
+    </div>
+    
+    <div class="promo-card">
+      <div class="promo-header">
+        <div class="promo-icon">🎥</div>
+        <div>
+          <div class="promo-title">YouTube Commercial</div>
+          <div class="promo-subtitle">15-second visual story</div>
+        </div>
+      </div>
+      <div class="storyboard">
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20%20A%20breathtaking%2012th-century%20stone%20castle%20at%20dawn,%20surrounded%20by%20misty%20vineyards,%20with%20golde.jpg" alt="Scene 1" class="story-image" loading="lazy">
+          <div class="story-caption">Castle at sunrise</div>
+        </div>
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20An%20opulent%20castle%20bedroom%20with%20a%20four-poster%20canopy%20bed%20draped%20in%20rich%20velvet,%20antique%20furni.jpg" alt="Scene 2" class="story-image" loading="lazy">
+          <div class="story-caption">Luxury suite</div>
+        </div>
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20An%20elegant%20medieval-style%20banquet%20hall%20with%20a%20long%20wooden%20table%20set%20with%20golden%20cutlery,%20cry.jpg" alt="Scene 3" class="story-image" loading="lazy">
+          <div class="story-caption">Fine dining</div>
+        </div>
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20serene%20stone-walled%20spa%20with%20a%20steaming%20infinity%20pool%20overlooking%20the%20vineyards,%20featuring.jpg" alt="Scene 4" class="story-image" loading="lazy">
+          <div class="story-caption">Spa experience</div>
+        </div>
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20romantic%20scene%20of%20guests%20strolling%20through%20sun-dappled%20vineyards%20at%20golden%20hour,%20with%20the%20.jpg" alt="Scene 5" class="story-image" loading="lazy">
+          <div class="story-caption">Vineyard tour</div>
+        </div>
+        <div class="story-cell">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20dramatic%20twilight%20shot%20of%20the%20illuminated%20castle%20with%20the%20text%20'Live%20Your%20Fairy%20Tale%20-%20The.jpg" alt="Scene 6" class="story-image" loading="lazy">
+          <div class="story-caption">Tagline reveal</div>
+        </div>
+      </div>
+      <div class="promo-content">
+        <p>Our 15-second YouTube commercial targets younger audiences (25-45) with quick cuts showcasing different experiences. The fast-paced editing keeps viewers engaged while highlighting our unique atmosphere.</p>
+        <p>Tagline: "Live Your Fairy Tale - The Enchanted Bastion Awaits" with a clear call-to-action to visit our website.</p>
+      </div>
+    </div>
+    
+    <!-- Instagram Campaign -->
+    <div class="promo-card instagram-card">
+      <div class="promo-header">
+        <div class="promo-icon">📱</div>
+        <div>
+          <div class="promo-title">Instagram Campaign</div>
+          <div class="promo-subtitle">Influencer collaboration</div>
+        </div>
+      </div>
+      
+      <div class="social-post">
+        <div class="social-header">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20stylish%20female%20travel%20influencer%20(age%2028-35)%20smiling%20confidently%20with%20a%20medieval%20castle%20an.jpg" 
+               alt="Influencer" 
+               class="social-avatar" 
+               loading="lazy">
+          <div class="social-user">
+            <div class="username">@TravelWithSophie</div>
+            <div class="location">The Enchanted Bastion</div>
+          </div>
+          <div class="more-options">⋯</div>
+        </div>
+        
+        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20stylish%20female%20travel%20influencer%20(age%2028-35)%20smiling%20confidently%20with%20a%20medieval%20castle%20an.jpg" 
+             alt="Instagram Post" 
+             class="post-image" 
+             loading="lazy">
+        
+        <div class="post-actions">
+          <button class="action-button like-button">
+            <span class="action-icon heart-icon">♡</span>
+            <span class="action-count like-count">12.4k</span>
+          </button>
+          <button class="action-button comment-button">
+            <span class="action-icon">💬</span>
+            <span class="action-count comment-count">428</span>
+          </button>
+          <button class="action-button share-button">
+            <span class="action-icon">↗️</span>
+          </button>
+          <button class="action-button save-button">
+            <span class="action-icon">🖤</span>
+          </button>
+        </div>
+        
+        <div class="post-caption">
+          <span class="caption-username">@TravelWithSophie</span>
+          ✨ Step into history at @EnchantedBastion - where medieval charm meets modern luxury! Swipe up to see inside my tower suite! 🏰✨ #CastleLiving #LoireValley
+        </div>
+        
+        <div class="post-details">
+          <div class="post-time">2 HOURS AGO</div>
+          <div class="view-comments">View all 428 comments</div>
+          <div class="add-comment" style="display: none;">
+            <input type="text" placeholder="Add a comment..." class="comment-input">
+            <button class="post-comment">Post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Enhanced Preloader with Resource Loading Check
+    document.addEventListener('DOMContentLoaded', function() {
+      const preloader = document.querySelector('.preloader');
+      const progressBar = document.querySelector('.preloader-progress-bar');
+      
+      // First check DOM readiness
+      let domReady = false;
+      let resourcesReady = false;
+      
+      // Check when DOM is fully loaded
+      document.addEventListener('readystatechange', () => {
+        if (document.readyState === 'complete') {
+          domReady = true;
+          checkLoadStatus();
+        }
+      });
+      
+      // Check when all resources are loaded
+      window.addEventListener('load', () => {
+        resourcesReady = true;
+        checkLoadStatus();
+      });
+      
+      function checkLoadStatus() {
+        if (domReady && resourcesReady) {
+          completeLoading();
+        } else {
+          simulateProgress();
+        }
+      }
+      
+      function simulateProgress() {
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.random() * 10;
+          progressBar.style.width = `${Math.min(progress, 90)}%`;
+          
+          if (progress >= 90) {
+            clearInterval(interval);
+          }
+        }, 100);
+      }
+      
+      function completeLoading() {
+        progressBar.style.width = '100%';
+        setTimeout(() => {
+          preloader.classList.add('fade-out');
+          
+          // Start animations after preloader hides
+          setTimeout(() => {
+            document.querySelectorAll('.section-header, .function-card, .marketing-summary').forEach(el => {
+              el.classList.add('visible');
+            });
+          }, 100);
+        }, 500);
+      }
+      
+      // Fallback in case something goes wrong
+      setTimeout(() => {
+        if (!preloader.classList.contains('fade-out')) {
+          completeLoading();
+        }
+      }, 5000);
+    });
+
+    // Premium Gold Ring Cursor
+    function initGoldCursor() {
+      const cursor = document.querySelector('.gold-cursor');
+      if (!cursor) return;
+      
+      let mouseX = 0;
+      let mouseY = 0;
+      let cursorX = 0;
+      let cursorY = 0;
+      const speed = 0.15;
+      
+      // Smooth cursor movement with RAF
+      const animateCursor = () => {
+        const dx = mouseX - cursorX;
+        const dy = mouseY - cursorY;
+        
+        cursorX += dx * speed;
+        cursorY += dy * speed;
+        
+        cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+        requestAnimationFrame(animateCursor);
+      };
+      
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      animateCursor();
+      
+      const hoverElements = document.querySelectorAll('a, button, .luxury-scroll-hint, .department-card');
+      hoverElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('cursor-hover');
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('cursor-hover');
+        });
+      });
+      
+      document.body.addEventListener('mouseout', (e) => {
+        const target = e.target.closest('a, button, .function-card, .channel-item, .summary-item, .luxury-scroll-hint');
+        if (target && !e.relatedTarget?.closest('a, button, .function-card, .channel-item, .summary-item, .luxury-scroll-hint')) {
+          cursor.classList.remove('cursor-hover');
+        }
+      });
+      
+      // Click effects
+      document.addEventListener('mousedown', () => {
+        cursor.classList.add('cursor-active');
+      });
+      
+      document.addEventListener('mouseup', () => {
+        cursor.classList.remove('cursor-active');
+      });
+    }
+    
+    // Gold Dust Effect
+    function initGoldDust() {
+      const container = document.getElementById('goldDust');
+      if (!container) return;
+      
+      const dustCount = Math.min(Math.floor(window.innerWidth / 25), 50);
+      
+      for (let i = 0; i < dustCount; i++) {
+        const dust = document.createElement('div');
+        dust.classList.add('dust-particle');
+        
+        // Random properties with constraints
+        const size = Math.random() * 4 + 1;
+        const posX = Math.random() * window.innerWidth;
+        const duration = Math.random() * 15 + 10;
+        const delay = Math.random() * 5;
+        const opacity = Math.random() * 0.3 + 0.1;
+        
+        dust.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${posX}px;
+          animation: float-dust ${duration}s linear ${delay}s infinite;
+          opacity: ${opacity};
+        `;
+        
+        container.appendChild(dust);
+      }
+    }
+    
+    // 3D Tilt Effect for Hero Image
+    function init3DTiltEffect() {
+      const heroWrapper = document.getElementById('heroImageWrapper');
+      if (!heroWrapper) return;
+      
+      const inner = heroWrapper.querySelector('.hero-image-inner');
+      
+      heroWrapper.addEventListener('mousemove', (e) => {
+        const rect = heroWrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 20;
+        const angleY = (centerX - x) / 20;
+        
+        inner.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        
+        // Parallax effect for the image
+        const moveX = (x - centerX) / 30;
+        const moveY = (y - centerY) / 30;
+        
+        heroWrapper.querySelector('.luxury-hero-image').style.transform = `scale(1.05) translate(${moveX}px, ${moveY}px)`;
+        
+        // Enhanced shadow effect
+        const shadowX = (x - centerX) / 20;
+        const shadowY = (y - centerY) / 20;
+        const shadowBlur = 40 + Math.abs(shadowX) + Math.abs(shadowY);
+        
+        heroWrapper.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, 0.6)`;
+      });
+      
+      heroWrapper.addEventListener('mouseleave', () => {
+        inner.style.transform = 'rotateX(0) rotateY(0)';
+        heroWrapper.querySelector('.luxury-hero-image').style.transform = 'scale(1.05)';
+        heroWrapper.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.8)';
+      });
+    }
+    
+    // Scroll animations with Intersection Observer
+    function initScrollAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      });
+
+      document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(section => {
+        observer.observe(section);
+      });
+    }
+    
+    // Smooth scrolling for navigation
+    function initSmoothScrolling() {
+      const scrollHint = document.querySelector('.luxury-scroll-hint');
+      if (scrollHint) {
+        scrollHint.addEventListener('click', () => {
+          document.querySelector('.staff-section')?.scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      }
+    }
+    
+    // Instagram interaction effects
+    function initInstagramInteractions() {
+      const likeButton = document.querySelector('.like-button');
+      if (!likeButton) return;
+      
+      const likeCount = document.querySelector('.like-count');
+      const commentButton = document.querySelector('.comment-button');
+      const viewComments = document.querySelector('.view-comments');
+      const addComment = document.querySelector('.add-comment');
+      const postComment = document.querySelector('.post-comment');
+      const commentInput = document.querySelector('.comment-input');
+      const commentCount = document.querySelector('.comment-count');
+      
+      let liked = false;
+      let commentsVisible = false;
+      let commentCountValue = 428;
+      
+      // Like button functionality
+      likeButton.addEventListener('click', function() {
+        if (!liked) {
+          // Format the current count
+          let currentCount = likeCount.textContent;
+          let isK = currentCount.includes('k');
+          let numericValue = parseFloat(currentCount.replace('k', ''));
+          
+          if (isK) {
+            numericValue += 0.1;
+            likeCount.textContent = numericValue.toFixed(1) + 'k';
+          } else {
+            numericValue += 1;
+            likeCount.textContent = numericValue;
+          }
+          
+          // Change heart to filled
+          this.querySelector('.heart-icon').textContent = '❤️';
+          liked = true;
+        } else {
+          // Revert if clicked again
+          this.querySelector('.heart-icon').textContent = '♡';
+          liked = false;
+        }
+        
+        // Add animation
+        this.classList.add('liked');
+        
+        setTimeout(() => {
+          this.classList.remove('liked');
+        }, 500);
+      });
+      
+      // Comment button functionality
+      if (commentButton) {
+        commentButton.addEventListener('click', function() {
+          if (!commentsVisible) {
+            viewComments.click();
+          }
+        });
+      }
+
+      // View comments functionality
+      if (viewComments) {
+        viewComments.addEventListener('click', function() {
+          commentsVisible = !commentsVisible;
+          if (commentsVisible) {
+            addComment.style.display = 'block';
+            if (commentInput) commentInput.focus();
+          } else {
+            addComment.style.display = 'none';
+          }
+        });
+      }
+
+      // Post comment functionality
+      if (postComment && commentInput) {
+        postComment.addEventListener('click', function() {
+          if (commentInput.value.trim() !== '') {
+            commentCountValue++;
+            if (commentCount) commentCount.textContent = commentCountValue;
+            commentInput.value = '';
+            if (addComment) addComment.style.display = 'none';
+          }
+        });
+
+        // Press enter to post comment
+        commentInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            postComment.click();
+          }
+        });
+      }
+    }
+    
+    // Initialize everything when DOM loads
+    window.addEventListener('load', () => {
+      initGoldCursor();
+      initGoldDust();
+      init3DTiltEffect();
+      initScrollAnimations();
+      initSmoothScrolling();
+      initInstagramInteractions();
+
+      // Preload critical images
+      const heroImg = new Image();
+      const heroImageElement = document.querySelector('.luxury-hero-image');
+      if (heroImageElement) {
+        heroImg.src = heroImageElement.src;
+      }
+    });
+  </script>
+</body>
+</html>
