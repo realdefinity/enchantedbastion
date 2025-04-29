@@ -4,8 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Enchanted Bastion | Luxury Castle Hotel</title>
-  <style>
-/* ===== HERO STYLES ===== */
+<style>
+/* ===== SMOOTH GLOBAL STYLES ===== */
+:root {
+  --gold: #d4af37;
+  --gold-light: #f8e8b0;
+  --gold-dark: #b38f2a;
+  --ivory: #f8f4e9;
+  --black: #121212;
+  --black-light: #1a1a1a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--ivory);
+  background: var(--black);
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ===== SMOOTH HERO SECTION ===== */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -13,8 +42,9 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), 
-              url('https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+  background: 
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), 
+    url('https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
 }
 
 .hero-overlay {
@@ -40,53 +70,53 @@
   line-height: 1.1;
   margin-bottom: 1.5rem;
   color: transparent;
-  background: linear-gradient(135deg, #d4af37 0%, #f8e8b0 50%, #b38f2a 100%);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
   letter-spacing: 0.05em;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.5s;
+  animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
 }
 
 .hero-subtitle {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-  color: #f8e8b0;
+  color: var(--gold-light);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 3rem;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards 0.8s;
+  animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.8s;
 }
 
 .hero-cta {
   display: inline-block;
   padding: 1rem 2.5rem;
   background: transparent;
-  color: #d4af37;
-  border: 2px solid #d4af37;
+  color: var(--gold);
+  border: 2px solid var(--gold);
   border-radius: 50px;
   font-family: 'Cinzel Decorative', serif;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1s cubic-bezier(0.65, 0, 0.35, 1) forwards 1s;
+  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards 1s;
   text-decoration: none;
 }
 
 .hero-cta:hover {
   background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  transform: translateY(-5px);
 }
 
 .hero-image-container {
@@ -94,9 +124,10 @@
   width: 80%;
   max-width: 800px;
   margin: 2rem auto 0;
+  perspective: 1000px;
   opacity: 0;
   transform: translateY(50px) scale(0.95);
-  animation: fadeInUp 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards 1.2s;
+  animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.2s;
 }
 
 .hero-image-wrapper {
@@ -104,6 +135,8 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
@@ -111,6 +144,8 @@
   width: 100%;
   height: auto;
   display: block;
+  transform: scale(1.05);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .image-reflection {
@@ -142,7 +177,7 @@
 .scroll-line {
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, #d4af37, transparent);
+  background: linear-gradient(to bottom, var(--gold), transparent);
   position: relative;
   overflow: hidden;
 }
@@ -154,8 +189,8 @@
   left: 0;
   width: 100%;
   height: 20px;
-  background: #d4af37;
-  animation: scrollPulse 2.5s infinite cubic-bezier(0.65, 0, 0.35, 1);
+  background: var(--gold);
+  animation: scrollPulse 2.5s infinite cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scroll-text {
@@ -164,9 +199,10 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-top: 1rem;
-  color: #f8e8b0;
+  color: var(--gold-light);
 }
 
+/* ===== ANIMATIONS ===== */
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
@@ -179,164 +215,25 @@
   0%, 100% { transform: translateY(0); opacity: 0.8; }
   50% { transform: translateY(40px); opacity: 1; }
 }
-    /* ===== CORE STYLES ===== */
-    :root {
-      /* Color System */
-      --gold: #d4af37;
-      --gold-light: #f8e8b0;
-      --gold-dark: #b38f2a;
-      --ivory: #f8f4e9;
-      --black: #121212;
-      --black-light: #1a1a1a;
-      --velvet: #3a0f0f;
-      
-      /* Transition System */
-      --transition-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-      --transition-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      
-      /* Spacing System */
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 3rem;
-      --space-xl: 4rem;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    body {
-      font-family: 'Cormorant Garamond', serif;
-      color: var(--ivory);
-      background-color: var(--black);
-      overflow-x: hidden;
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-    
-    /* ===== UTILITY CLASSES ===== */
-    .container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 var(--space-md);
-    }
-    
-    .section {
-      padding: var(--space-xl) 0;
-      position: relative;
-    }
-    
-    .section-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: var(--gold);
-      margin-bottom: var(--space-lg);
-      text-align: center;
-      position: relative;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-    
-    /* ===== COMPONENT STYLES ===== */
-    /* Preloader Component */
-    .preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--black);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 1s var(--transition-smooth);
-    }
-    
-    .preloader.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    
-    /* Cursor Component */
-    .gold-cursor {
-      position: fixed;
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: 
-        transform 0.1s ease-out,
-        width 0.3s var(--transition-smooth),
-        height 0.3s var(--transition-smooth);
-      mix-blend-mode: exclusion;
-    }
-    
-    /* Hero Component */
-    .hero-section {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), 
-                  url('https://example.com/hero.jpg') center/cover no-repeat;
-    }
-    
-    /* Staff Component */
-    .department-card {
-      background: rgba(30, 30, 30, 0.8);
-      border-radius: 12px;
-      padding: var(--space-md);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transition: all 0.4s var(--transition-smooth);
-    }
-    
-    /* ===== ANIMATION SYSTEM ===== */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s var(--transition-smooth);
-    }
-    
-    [data-animate].visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    [data-animate-delay="100"] { transition-delay: 0.1s; }
-    [data-animate-delay="200"] { transition-delay: 0.2s; }
-    [data-animate-delay="300"] { transition-delay: 0.3s; }
-    
-    @media (max-width: 768px) {
-      :root {
-        --space-md: 1.5rem;
-        --space-lg: 2rem;
-        --space-xl: 3rem;
-      }
-    }
-  </style>
+
+/* ===== GOLD DUST PARTICLES ===== */
+.gold-particle {
+  position: absolute;
+  background: var(--gold-light);
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(1px);
+  z-index: -1;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.3; }
+  90% { opacity: 0.3; }
+  100% { transform: translate(80px, -100vh) rotate(360deg); opacity: 0; }
+}
+</style>
 </head>
 <body>
   <!-- ===== COMPONENTS ===== -->
@@ -350,10 +247,29 @@
   <div class="gold-cursor" data-component="cursor"></div>
   
   <!-- Hero Section -->
+<!-- ===== SMOOTH HERO SECTION ===== -->
 <section class="hero-section" data-component="hero">
-  <div class="container">
-    <h1 class="hero-title" data-animate>The Enchanted Bastion</h1>
-    <p class="hero-subtitle" data-animate data-animate-delay="200">LOIRE VALLEY, FRANCE</p>
+  <div class="hero-overlay"></div>
+  
+  <div class="hero-content">
+    <h1 class="hero-title">The Enchanted Bastion</h1>
+    <p class="hero-subtitle">LOIRE VALLEY, FRANCE</p>
+    
+    <div class="hero-image-container">
+      <div class="hero-image-wrapper" id="heroImageWrapper">
+        <img src="https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+             alt="The Enchanted Bastion" 
+             class="hero-image">
+        <div class="image-reflection"></div>
+      </div>
+    </div>
+    
+    <a href="#explore" class="hero-cta">Begin Your Journey</a>
+  </div>
+  
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll to Explore</span>
   </div>
 </section>
   
@@ -511,8 +427,71 @@
       document.querySelectorAll('[data-animate]').forEach(el => {
         observer.observe(el);
       });
+// ===== SMOOTH HERO COMPONENT =====
+App.components.hero = {
+  init(el) {
+    this.createParticles(el);
+    this.initParallax(el);
+  },
+
+  // Floating gold dust particles
+  createParticles(el) {
+    const particleCount = Math.min(Math.floor(window.innerWidth / 20), 60);
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('gold-particle');
+      
+      // Random properties
+      const size = Math.random() * 4 + 1;
+      const posX = Math.random() * window.innerWidth;
+      const duration = Math.random() * 15 + 10;
+      const delay = Math.random() * 5;
+      const opacity = Math.random() * 0.3 + 0.1;
+      
+      particle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${posX}px;
+        animation: floatParticle ${duration}s linear ${delay}s infinite;
+        opacity: ${opacity};
+      `;
+      
+      el.appendChild(particle);
     }
-  };
+  },
+
+  // Mouse-tilt effect on castle image
+  initParallax(el) {
+    const wrapper = el.querySelector('#heroImageWrapper');
+    if (!wrapper) return;
+    
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const angleX = (y - centerY) / 20;
+      const angleY = (centerX - x) / 20;
+      
+      wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+      
+      // Bonus: Dynamic shadow
+      const shadowX = (x - centerX) / 20;
+      const shadowY = (y - centerY) / 20;
+      const shadowBlur = 40 + Math.abs(shadowX) + Math.abs(shadowY);
+      wrapper.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, 0.6)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      wrapper.style.transform = 'rotateX(0) rotateY(0)';
+      wrapper.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.8)';
+    });
+  }
+};
 
   // Start the app
   document.addEventListener('DOMContentLoaded', () => App.init());
