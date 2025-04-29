@@ -2002,17 +2002,24 @@
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
+            // Add visible class to trigger animations
             entry.target.classList.add('visible');
             
-            // Special handling for promotion cards
-            if (entry.target.classList.contains('promo-card')) {
-              const section = entry.target.closest('.section');
-              if (section && section.id === 'promotions') {
-                const cards = section.querySelectorAll('.promo-card');
-                cards.forEach((card, index) => {
+            // Special handling for promotion section
+            if (entry.target.id === 'promotions' || 
+                (entry.target.classList.contains('promo-card') && 
+                 entry.target.closest('#promotions'))) {
+              
+              const section = entry.target.closest('#promotions') || entry.target;
+              const cards = section.querySelectorAll('.promo-card');
+              
+              cards.forEach((card, index) => {
+                // Only set delay if card isn't already visible
+                if (!card.classList.contains('visible')) {
                   card.style.transitionDelay = `${index * 0.2}s`;
-                });
-              }
+                  card.classList.add('visible');
+                }
+              });
             }
             
             observer.unobserve(entry.target);
@@ -2023,9 +2030,13 @@
         rootMargin: '0px 0px -100px 0px'
       });
     
-      // Observe both sections and individual cards
-      document.querySelectorAll('.section-header, .department-card, .employee-summary, .promo-card').forEach(el => {
-        observer.observe(el);
+      document.querySelectorAll(
+        '.section-header, .department-card, .employee-summary, #promotions, .promo-card'
+      ).forEach(el => {
+        // Only observe if not already visible
+        if (!el.classList.contains('visible')) {
+          observer.observe(el);
+        }
       });
     }
     
