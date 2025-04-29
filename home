@@ -382,177 +382,140 @@
   -->
 
   <!-- ===== MODULAR JAVASCRIPT ===== -->
-  <script>
-    // ===== CORE MODULES =====
-    const App = {
-init() {
-  document.querySelectorAll('[data-component]').forEach(el => {
-    const component = el.getAttribute('data-component');
-    if (this.components[component]) {
-      this.components[component].init(el);
-    } 
-  });  
+<script>
+  // ===== CORE MODULES =====
+  const App = {
+    // Initialize all components
+    init() {
+      // Load components
+      document.querySelectorAll('[data-component]').forEach(el => {
+        const component = el.getAttribute('data-component');
+        if (this.components[component]) {
+          this.components[component].init(el);
+        }
+      });
+      
+      // Initialize animations
+      this.initAnimations();
+    },
+    
+    // Component registry
+    components: {
       // ===== HERO COMPONENT =====
-App.components.hero = {
-  init(el) {
-    this.initParallax(el);
-  },
-
-  initParallax(el) {
-    const wrapper = el.querySelector('#heroImageWrapper');
-    if (!wrapper) return;
-    
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const angleX = (y - centerY) / 20;
-      const angleY = (centerX - x) / 20;
-      
-      wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      wrapper.style.transform = 'rotateX(0) rotateY(0)';
-    });
-  }
-};
-        });
-        
-        // Initialize animations
-        this.initAnimations();
-      },
-      
-      // Component registry
-      components: {},
-      
-      // Animation system
-      initAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
+      hero: {
+        init(el) {
+          this.initParallax(el);
+        },
+        initParallax(el) {
+          const wrapper = el.querySelector('#heroImageWrapper');
+          if (!wrapper) return;
+          
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const angleX = (y - centerY) / 20;
+            const angleY = (centerX - x) / 20;
+            
+            wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
           });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('[data-animate]').forEach(el => {
-          observer.observe(el);
-        });
-      }
-    };
-    
-    // ===== COMPONENT MODULES =====
-    // Preloader Component
-    App.components.preloader = {
-      init(el) {
-        // Simulate loading
-        setTimeout(() => {
-          el.classList.add('fade-out');
           
-          // Remove from DOM after animation
-          setTimeout(() => el.remove(), 1000);
-        }, 1500);
-      }
-    };
-    
-    // Cursor Component
-    App.components.cursor = {
-      init(el) {
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        const speed = 0.15;
-        
-        const animate = () => {
-          const dx = mouseX - cursorX;
-          const dy = mouseY - cursorY;
-          
-          cursorX += dx * speed;
-          cursorY += dy * speed;
-          
-          el.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-          requestAnimationFrame(animate);
-        };
-        
-        document.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-        });
-        
-        animate();
-      }
-    };
-    
-    // Staff Component
-    App.components.staff = {
-      init(el) {
-        const grid = el.querySelector('.department-grid');
-        
-        // Sample data - in real app you might fetch this
-        const departments = [
-          {
-            title: "Front Office",
-            icon: "🏨",
-            staff: 24,
-            positions: [
-              { role: "Front Desk Manager", count: 2, salary: "€65,000" },
-              { role: "Front Desk Agents", count: 14, salary: "€42,000" }
-            ]
-          },
-          // Add more departments here
-        ];
-        
-        // Render departments
-        departments.forEach(dept => {
-          grid.innerHTML += this.createDepartmentCard(dept);
-        });
+          el.addEventListener('mouseleave', () => {
+            wrapper.style.transform = 'rotateX(0) rotateY(0)';
+          });
+        }
       },
       
-      createDepartmentCard(dept) {
-        return `
-          <div class="department-card" data-animate>
-            <h3>${dept.icon} ${dept.title}</h3>
-            <p>${dept.staff} staff members</p>
-            <ul>
-              ${dept.positions.map(pos => `
-                <li>${pos.role}: ${pos.count} (${pos.salary})</li>
-              `).join('')}
-            </ul>
-          </div>
-        `;
+      // ===== PRELOADER COMPONENT =====
+      preloader: {
+        init(el) {
+          setTimeout(() => {
+            el.classList.add('fade-out');
+            setTimeout(() => el.remove(), 1000);
+          }, 1500);
+        }
+      },
+      
+      // ===== CURSOR COMPONENT =====
+      cursor: {
+        init(el) {
+          let mouseX = 0, mouseY = 0;
+          let cursorX = 0, cursorY = 0;
+          const speed = 0.15;
+          
+          const animate = () => {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
+            cursorX += dx * speed;
+            cursorY += dy * speed;
+            el.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+            requestAnimationFrame(animate);
+          };
+          
+          document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+          });
+          
+          animate();
+        }
+      },
+      
+      // ===== STAFF COMPONENT =====
+      staff: {
+        init(el) {
+          const grid = el.querySelector('.department-grid');
+          const departments = [
+            {
+              title: "Front Office",
+              icon: "🏨",
+              staff: 24,
+              positions: [
+                { role: "Front Desk Manager", count: 2, salary: "€65,000" },
+                { role: "Front Desk Agents", count: 14, salary: "€42,000" }
+              ]
+            }
+          ];
+          
+          departments.forEach(dept => {
+            grid.innerHTML += `
+              <div class="department-card" data-animate>
+                <h3>${dept.icon} ${dept.title}</h3>
+                <p>${dept.staff} staff members</p>
+                <ul>
+                  ${dept.positions.map(pos => `
+                    <li>${pos.role}: ${pos.count} (${pos.salary})</li>
+                  `).join('')}
+                </ul>
+              </div>
+            `;
+          });
+        }
       }
-    };
+    },
     
-    // ===== NEW COMPONENT TEMPLATE =====
-    /*
-    App.components.template = {
-      init(el) {
-        // Component initialization code
-        
-        // Example: Load data and render
-        this.loadData().then(data => {
-          this.render(el, data);
+    // Animation system
+    initAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
-      },
+      }, { threshold: 0.1 });
       
-      loadData() {
-        // Return promise with component data
-        return Promise.resolve({/* data */});
-      },
-      
-      render(el, data) {
-        // Render component HTML
-        el.innerHTML = `<div>New Component</div>`;
-      }
-    };
-    */
-    
-    // Initialize the app when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => App.init());
-  </script>
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        observer.observe(el);
+      });
+    }
+  };
+
+  // Start the app
+  document.addEventListener('DOMContentLoaded', () => App.init());
+</script>
 </body>
 </html>
