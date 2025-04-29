@@ -394,13 +394,6 @@
       text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
     }
     
-    /* Update your HTML to use this structure:
-    <div class="luxury-scroll-hint">
-      <div class="scroll-arrow"></div>
-      <div class="scroll-line"></div>
-      <span class="scroll-hint-text">Explore</span>
-    </div>
-    */
     
     .section {
       background: rgba(20, 20, 20, 0.9);
@@ -1452,7 +1445,6 @@
       <div class="scroll-arrow"></div>
       <div class="scroll-line"></div>
       <span class="scroll-hint-text">Explore</span>
-      <span>Explore</span>
     </div>
   </div>
   
