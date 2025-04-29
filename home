@@ -385,15 +385,14 @@
   <script>
     // ===== CORE MODULES =====
     const App = {
-      // Initialize all components
-      init() {
-        // Load components
-        document.querySelectorAll('[data-component]').forEach(el => {
-          const component = el.getAttribute('data-component');
-          if (this.components[component]) {
-            this.components[component].init(el);
-          }; 
-      // ===== HERO COMPONENT (COPY THIS) =====
+init() {
+  document.querySelectorAll('[data-component]').forEach(el => {
+    const component = el.getAttribute('data-component');
+    if (this.components[component]) {
+      this.components[component].init(el);
+    } 
+  });  
+      // ===== HERO COMPONENT =====
 App.components.hero = {
   init(el) {
     this.initParallax(el);
