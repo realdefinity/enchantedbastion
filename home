@@ -1164,10 +1164,18 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 4rem;
-      color: white; /* Changed from gradient to solid white */
+      color: white;
+      background: linear-gradient(
+        to right,
+        white 0%,
+        #f8f4e9 50%,
+        white 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
       text-shadow: 
-        0 0 10px rgba(212, 175, 55, 0.7), /* Gold glow */
-        0 2px 4px rgba(0, 0, 0, 0.5); /* Depth shadow */
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(212, 175, 55, 0.3);
     }
 
     .title-line {
