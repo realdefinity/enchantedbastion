@@ -206,275 +206,6 @@
       margin: 0;
     }
 
-/* ===== ENHANCED STAFF SECTION ===== */
-    .staff-section {
-      position: relative;
-      padding: 8rem 2rem;
-      background: 
-        radial-gradient(ellipse at top, rgba(27, 39, 53, 0.95) 0%, rgba(9, 10, 15, 0.95) 100%),
-        url('https://images.unsplash.com/photo-1600566752229-250ed79470b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-      overflow: hidden;
-    }
-
-    .staff-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .section-header.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
-      color: transparent;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--parchment);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    /* Department Grid */
-    .employee-structure {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .department-card {
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity, box-shadow;
-}
-
-.department-card:hover {
-  transform: translateY(-10px) translateZ(30px) !important;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 
-              0 0 0 1px rgba(212, 175, 55, 0.4) !important;
-}
-
-    .department-card.visible {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .department-card:nth-child(1) { transition-delay: 0.1s; }
-    .department-card:nth-child(2) { transition-delay: 0.2s; }
-    .department-card:nth-child(3) { transition-delay: 0.3s; }
-    .department-card:nth-child(4) { transition-delay: 0.4s; }
-    .department-card:nth-child(5) { transition-delay: 0.5s; }
-    .department-card:nth-child(6) { transition-delay: 0.6s; }
-
-
-    /* Department Header */
-    .department-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-      padding-bottom: 1rem;
-    }
-
-    .department-icon {
-      font-size: 2rem;
-      margin-right: 1.5rem;
-      color: var(--gold);
-    }
-
-    .department-title {
-      font-family: 'Cinzel', serif;
-      color: var(--gold);
-      font-size: 1.5rem;
-    }
-
-    .employee-count {
-      font-size: 0.9rem;
-      color: var(--parchment);
-      opacity: 0.8;
-      margin-left: auto;
-      background: rgba(212, 175, 55, 0.1);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-    }
-
-    /* Employee List */
-    .employee-list {
-      list-style-type: none;
-      margin-bottom: 1.5rem;
-    }
-
-    .employee-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.8rem 0;
-      border-bottom: 1px dashed rgba(212, 175, 55, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .employee-item:hover {
-      transform: translateX(5px);
-      border-bottom-color: rgba(212, 175, 55, 0.3);
-    }
-
-    .employee-item:last-child {
-      border-bottom: none;
-    }
-
-    .position {
-      color: var(--ivory);
-      flex: 1;
-    }
-
-    .count {
-      color: var(--gold);
-      font-weight: 600;
-      width: 50px;
-      text-align: right;
-    }
-
-    .salary {
-      color: var(--parchment);
-      width: 100px;
-      text-align: right;
-      font-size: 0.9em;
-    }
-
-    /* Benefits */
-    .benefits {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px dashed rgba(212, 175, 55, 0.2);
-    }
-
-    .benefits-title {
-      color: var(--gold);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .benefits-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      list-style-type: none;
-    }
-
-    .benefit-item {
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--parchment);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      transition: all 0.3s ease;
-    }
-
-    .benefit-item:hover {
-      background: rgba(212, 175, 55, 0.2);
-      transform: translateY(-2px);
-    }
-
-    .department-notes {
-      font-size: 0.85rem;
-      color: var(--parchment);
-      opacity: 0.7;
-      margin-top: 1rem;
-      font-style: italic;
-    }
-
-    /* Summary Section */
-    .employee-summary {
-      margin-top: 3rem;
-      padding: 2rem;
-      background: rgba(30, 30, 30, 0.8);
-      border-radius: 16px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transform: translateY(30px);
-      opacity: 0;
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-
-    .employee-summary.visible {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .summary-item {
-      text-align: center;
-    }
-
-    .summary-value {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-
-    .summary-label {
-      font-size: 0.9rem;
-      color: var(--parchment);
-      opacity: 0.8;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .salary-stats {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .salary-stat {
-      background: rgba(30, 30, 30, 0.8);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transition: all 0.4s ease;
-    }
-
-    .salary-stat:hover {
-      transform: translateY(-5px);
-      border-color: rgba(212, 175, 55, 0.4);
-    }
-
-    .salary-stat-title {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      margin-bottom: 0.5rem;
-      font-size: 1.1rem;
-    }
-
-    .salary-stat-value {
-      font-size: 1.5rem;
-      color: var(--ivory);
-    }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -596,6 +327,165 @@
     filter: blur(0);
   }
 }
+
+    /* ===== ENHANCED STAFF CARDS ===== */
+    .employee-structure {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .department-card {
+      background: linear-gradient(135deg, rgba(30,30,30,0.9) 0%, rgba(18,18,18,0.95) 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: translateY(30px);
+      opacity: 0;
+      perspective: 1000px;
+      transform-style: preserve-3d;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      will-change: transform, box-shadow;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .department-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.05) 50%, 
+        transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .department-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .department-card:hover {
+      transform: translateY(-5px) translateZ(20px) scale(1.02) !important;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 
+                  0 0 0 1px rgba(212, 175, 55, 0.4) !important;
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .department-card:hover::before {
+      opacity: 1;
+    }
+
+    .department-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+
+    .department-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.5) 50%, 
+        transparent 100%);
+    }
+
+    .department-icon {
+      font-size: 2rem;
+      margin-right: 1.5rem;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .department-card:hover .department-icon {
+      transform: scale(1.2);
+    }
+
+    .department-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .employee-count {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      margin-left: auto;
+      background: rgba(212, 175, 55, 0.1);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .employee-list {
+      list-style-type: none;
+    }
+
+    .employee-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+      position: relative;
+      transition: all 0.2s ease-out;
+    }
+
+    .employee-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.1) 50%, 
+        transparent 100%);
+    }
+
+    .employee-item:hover {
+      transform: translateX(5px);
+    }
+
+    .employee-item:hover .position {
+      color: var(--gold-light);
+    }
+
+    .position {
+      color: var(--ivory);
+      flex: 1;
+      transition: color 0.2s ease;
+    }
+
+    .count {
+      color: var(--gold);
+      font-weight: 600;
+      width: 50px;
+      text-align: right;
+    }
+
+    .salary {
+      color: var(--gold-light);
+      width: 100px;
+      text-align: right;
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
     </style>
 </head>
 <body>
@@ -783,21 +673,7 @@
             <span class="count">4</span>
             <span class="salary">€48,000</span>
           </li>
-          <li class="employee-item">
-            <span class="position">Bell Services</span>
-            <span class="count">4</span>
-            <span class="salary">€38,000</span>
-          </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Commission on upgrades</li>
-            <li class="benefit-item">Quarterly bonuses</li>
-            <li class="benefit-item">Language training</li>
-          </ul>
-        </div>
-        <p class="department-notes">24/7 coverage with increased staffing during peak hours (7-10am, 4-8pm)</p>
       </div>
       
       <!-- Housekeeping -->
@@ -814,11 +690,6 @@
             <span class="salary">€58,000</span>
           </li>
           <li class="employee-item">
-            <span class="position">Floor Supervisors</span>
-            <span class="count">5</span>
-            <span class="salary">€45,000</span>
-          </li>
-          <li class="employee-item">
             <span class="position">Room Attendants</span>
             <span class="count">32</span>
             <span class="salary">€36,000</span>
@@ -829,15 +700,6 @@
             <span class="salary">€34,000</span>
           </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Performance bonuses</li>
-            <li class="benefit-item">Health insurance</li>
-            <li class="benefit-item">Uniform allowance</li>
-          </ul>
-        </div>
-        <p class="department-notes">15-30 minutes per room, 8 rooms per attendant per shift at 90% occupancy</p>
       </div>
       
       <!-- Food & Beverage -->
@@ -859,35 +721,11 @@
             <span class="salary">€62,000</span>
           </li>
           <li class="employee-item">
-            <span class="position">Line Cooks</span>
-            <span class="count">4</span>
-            <span class="salary">€48,000</span>
-          </li>
-          <li class="employee-item">
-            <span class="position">Servers</span>
-            <span class="count">10</span>
-            <span class="salary">€42,000</span>
-          </li>
-          <li class="employee-item">
             <span class="position">Bartenders</span>
             <span class="count">4</span>
             <span class="salary">€45,000</span>
           </li>
-          <li class="employee-item">
-            <span class="position">Support Staff</span>
-            <span class="count">6</span>
-            <span class="salary">€38,000</span>
-          </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Tips pool</li>
-            <li class="benefit-item">Wine training</li>
-            <li class="benefit-item">Meal allowances</li>
-          </ul>
-        </div>
-        <p class="department-notes">Includes restaurant, bar, room service, and breakfast service</p>
       </div>
       
       <!-- Guest Services -->
@@ -899,16 +737,6 @@
         </div>
         <ul class="employee-list">
           <li class="employee-item">
-            <span class="position">Guest Services Manager</span>
-            <span class="count">1</span>
-            <span class="salary">€68,000</span>
-          </li>
-          <li class="employee-item">
-            <span class="position">Valet Parking</span>
-            <span class="count">6</span>
-            <span class="salary">€40,000</span>
-          </li>
-          <li class="employee-item">
             <span class="position">Spa Therapists</span>
             <span class="count">6</span>
             <span class="salary">€52,000</span>
@@ -919,25 +747,11 @@
             <span class="salary">€45,000</span>
           </li>
           <li class="employee-item">
-            <span class="position">Business Center</span>
-            <span class="count">4</span>
-            <span class="salary">€48,000</span>
-          </li>
-          <li class="employee-item">
             <span class="position">Specialty Attendants</span>
             <span class="count">4</span>
             <span class="salary">€42,000</span>
           </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Commission on services</li>
-            <li class="benefit-item">Certification programs</li>
-            <li class="benefit-item">Wellness benefits</li>
-          </ul>
-        </div>
-        <p class="department-notes">Includes horseback riding, tennis, golf, and other luxury amenities</p>
       </div>
       
       <!-- Maintenance -->
@@ -958,21 +772,7 @@
             <span class="count">5</span>
             <span class="salary">€52,000</span>
           </li>
-          <li class="employee-item">
-            <span class="position">Landscapers</span>
-            <span class="count">4</span>
-            <span class="salary">€45,000</span>
-          </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Tool allowances</li>
-            <li class="benefit-item">Overtime pay</li>
-            <li class="benefit-item">Safety bonuses</li>
-          </ul>
-        </div>
-        <p class="department-notes">Covers castle maintenance, HVAC, plumbing, electrical, and groundskeeping</p>
       </div>
       
       <!-- Security -->
@@ -994,56 +794,6 @@
             <span class="salary">€55,000</span>
           </li>
         </ul>
-        <div class="benefits">
-          <div class="benefits-title">Key Benefits</div>
-          <ul class="benefits-list">
-            <li class="benefit-item">Hazard pay</li>
-            <li class="benefit-item">Retirement matching</li>
-            <li class="benefit-item">Fitness stipend</li>
-          </ul>
-        </div>
-        <p class="department-notes">24/7 coverage with CCTV monitoring and patrols of the 15-acre property</p>
-      </div>
-    </div>
-    
-    <div class="employee-summary">
-      <h3>Staffing Summary</h3>
-      <div class="summary-grid">
-        <div class="summary-item">
-          <div class="summary-value">1.56</div>
-          <div class="summary-label">Employees Per Room</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-value">136</div>
-          <div class="summary-label">Total Employees</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-value">24/7</div>
-          <div class="summary-label">Essential Services</div>
-        </div>
-        <div class="summary-item">
-          <div class="summary-value">3:1</div>
-          <div class="summary-label">Guest to Staff Ratio</div>
-        </div>
-      </div>
-      
-      <div class="salary-stats">
-        <div class="salary-stat">
-          <div class="salary-stat-title">Average Salary</div>
-          <div class="salary-stat-value">€48,750</div>
-        </div>
-        <div class="salary-stat">
-          <div class="salary-stat-title">Annual Payroll</div>
-          <div class="salary-stat-value">€6.63 million</div>
-        </div>
-        <div class="salary-stat">
-          <div class="salary-stat-title">Benefits Budget</div>
-          <div class="salary-stat-value">€1.2 million</div>
-        </div>
-        <div class="salary-stat">
-          <div class="salary-stat-title">Training Budget</div>
-          <div class="salary-stat-value">€350,000</div>
-        </div>
       </div>
     </div>
   </div>
