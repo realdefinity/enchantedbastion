@@ -3267,7 +3267,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- Enhanced Staff Summary -->
 <div class="employee-summary">
   <div class="summary-header">
-    <h3 class="summary-title">Staffing Excellence</h3>
+    <h3 class="summary-title">Work Force Summary</h3>
     <div class="summary-divider">
       <div class="divider-line"></div>
       <div class="divider-icon">✨</div>
