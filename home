@@ -573,17 +573,6 @@
   </div>
 </section>
   
-  <!-- Staff Section -->
-  <section class="section" data-component="staff" id="staff">
-    <div class="container">
-      <h2 class="section-title" data-animate>Our Staff</h2>
-      
-      <div class="department-grid">
-        <!-- Department cards injected by JavaScript -->
-      </div>
-    </div>
-  </section>
-  
   <!-- ===== NEW SECTION TEMPLATE ===== -->
   <!-- 
   <section class="section" data-component="template" id="new-section">
@@ -719,39 +708,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       },
       
-      // ===== STAFF COMPONENT =====
-      staff: {
-        init(el) {
-          const grid = el.querySelector('.department-grid');
-          const departments = [
-            {
-              title: "Front Office",
-              icon: "🏨",
-              staff: 24,
-              positions: [
-                { role: "Front Desk Manager", count: 2, salary: "€65,000" },
-                { role: "Front Desk Agents", count: 14, salary: "€42,000" }
-              ]
-            }
-          ];
-          
-          departments.forEach(dept => {
-            grid.innerHTML += `
-              <div class="department-card" data-animate>
-                <h3>${dept.icon} ${dept.title}</h3>
-                <p>${dept.staff} staff members</p>
-                <ul>
-                  ${dept.positions.map(pos => `
-                    <li>${pos.role}: ${pos.count} (${pos.salary})</li>
-                  `).join('')}
-                </ul>
-              </div>
-            `;
-          });
-        }
-      }
-    },
-    
     // Animation system
     initAnimations() {
       const observer = new IntersectionObserver((entries) => {
