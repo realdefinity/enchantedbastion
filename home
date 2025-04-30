@@ -208,7 +208,7 @@
     
     <div class="hero-image-container">
       <div class="hero-image-wrapper" id="heroImageWrapper">
-        <img src="https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20Create%20a%20photorealistic%208K%20sunset%20view%20of%20a%20luxurious%2012th-century%20castle%20hotel%20in%20France's%20.jpg" 
              alt="Couldn't load image" 
              class="hero-image">
         <div class="image-reflection"></div>
