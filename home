@@ -1372,7 +1372,321 @@
       opacity: 1;
     }
 
+    /* ===== CLASSIFICATION SECTION ===== */
+    .classification-section {
+      background: linear-gradient(to bottom, rgba(15,15,15,0.95), rgba(10,10,10,0.98));
+      padding: 6rem 2rem;
+    }
 
+    .classification-badge {
+      background: rgba(212,175,55,0.1);
+      border: 2px solid rgba(212,175,55,0.3);
+      border-radius: 50px;
+      padding: 1.5rem 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto 3rem;
+      backdrop-filter: blur(5px);
+      transition: all 0.5s ease;
+    }
+
+    .classification-badge:hover {
+      transform: scale(1.05);
+      background: rgba(212,175,55,0.2);
+      box-shadow: 0 0 30px rgba(212,175,55,0.2);
+    }
+
+    .badge-icon {
+      font-size: 2rem;
+    }
+
+    .badge-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .classification-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: rgba(30,30,30,0.7);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      transition: all 0.5s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.2) rotate(10deg);
+      text-shadow: 0 0 15px rgba(212,175,55,0.5);
+    }
+
+    /* ===== TARGET MARKET SECTION ===== */
+    .target-section {
+      background: linear-gradient(to bottom, rgba(18,18,18,0.95), rgba(12,12,12,0.98));
+      padding: 6rem 2rem;
+    }
+
+    .target-profile {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .age-range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .age-bubble {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.1);
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      transition: all 0.5s ease;
+    }
+
+    .age-line {
+      flex-grow: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      max-width: 200px;
+      position: relative;
+    }
+
+    .age-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(to left, var(--gold), transparent);
+    }
+
+    .guest-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .guest-card {
+      background: rgba(25,25,25,0.8);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+
+    .guest-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .guest-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      transition: all 0.5s ease;
+    }
+
+    .guest-card:hover .guest-icon {
+      transform: scale(1.3);
+      filter: drop-shadow(0 0 8px rgba(212,175,55,0.5));
+    }
+
+    /* ===== DISCOUNTS SECTION ===== */
+    .discounts-section {
+      background: linear-gradient(to bottom, rgba(20,20,20,0.95), rgba(15,15,15,0.98));
+      padding: 6rem 2rem;
+    }
+
+    .discounts-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .discount-card {
+      background: linear-gradient(135deg, rgba(30,30,30,0.9), rgba(20,20,20,0.95));
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .discount-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border-color: rgba(212,175,55,0.5);
+    }
+
+    .discount-badge {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: var(--gold);
+      color: var(--black);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      transform: rotate(15deg);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+    }
+
+    .membership-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      background: rgba(25,25,25,0.8);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.5s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212,175,55,0.4);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      transition: all 0.5s ease;
+    }
+
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.3);
+      text-shadow: 0 0 15px rgba(212,175,55,0.5);
+    }
+
+    .offer-dates {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      color: var(--gold-light);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ===== SHARED STYLES ===== */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      color: white;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .title-line {
+      display: block;
+    }
+
+    .section-divider {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-divider::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--gold);
+    }
+
+    /* Animations */
+    @keyframes floatUp {
+      0% { transform: translateY(30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .section-header,
+    .classification-badge,
+    .feature-card,
+    .target-profile,
+    .guest-card,
+    .discount-card,
+    .benefit-card {
+      animation: floatUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.2s; }
+    .feature-card:nth-child(2) { animation-delay: 0.4s; }
+    .feature-card:nth-child(3) { animation-delay: 0.6s; }
+    .guest-card:nth-child(1) { animation-delay: 0.3s; }
+    .guest-card:nth-child(2) { animation-delay: 0.5s; }
+    .guest-card:nth-child(3) { animation-delay: 0.7s; }
+    .benefit-card:nth-child(1) { animation-delay: 0.4s; }
+    .benefit-card:nth-child(2) { animation-delay: 0.6s; }
+    
     </style>
 </head>
 <body>
@@ -1573,6 +1887,126 @@
           <div class="highlight-icon">🕯️</div>
           <h3 class="highlight-title">Timeless Atmosphere</h3>
           <p class="highlight-text">Where the past and present dance in golden light</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLASSIFICATION SECTION ===== -->
+<section class="classification-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-line">Hotel</span>
+        <span class="title-line">Classification</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="classification-content">
+      <div class="classification-badge">
+        <div class="badge-icon">🏆</div>
+        <div class="badge-text">Full Service</div>
+      </div>
+      
+      <div class="classification-features">
+        <div class="feature-card">
+          <div class="feature-icon">🛎️</div>
+          <h3>24/7 Concierge</h3>
+          <p>Round-the-clock personalized service</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🍽️</div>
+          <h3>Gourmet Dining</h3>
+          <p>3 award-winning restaurants</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🏊</div>
+          <h3>Wellness Center</h3>
+          <p>Spa, pool & fitness facilities</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TARGET MARKET SECTION ===== -->
+<section class="target-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-line">Our</span>
+        <span class="title-line">Distinguished Guests</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="target-content">
+      <div class="target-profile">
+        <div class="age-range">
+          <div class="age-bubble">25</div>
+          <div class="age-line"></div>
+          <div class="age-bubble">55</div>
+        </div>
+        <h3>Primary Demographic</h3>
+      </div>
+      
+      <div class="guest-types">
+        <div class="guest-card">
+          <div class="guest-icon">💎</div>
+          <h4>Luxury Seekers</h4>
+          <p>Discerning travelers expecting premium service</p>
+        </div>
+        
+        <div class="guest-card">
+          <div class="guest-icon">🏰</div>
+          <h4>History Enthusiasts</h4>
+          <p>Guests fascinated by medieval heritage</p>
+        </div>
+        
+        <div class="guest-card">
+          <div class="guest-icon">✨</div>
+          <h4>Experience Collectors</h4>
+          <p>Those seeking unique, memorable stays</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DISCOUNTS SECTION ===== -->
+<section class="discounts-section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-line">Exclusive</span>
+        <span class="title-line">Benefits</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="discounts-content">
+      <div class="discount-card main-offer">
+        <div class="discount-badge">40% OFF</div>
+        <h3>Seasonal Promotions</h3>
+        <p>Enjoy substantial savings during selected periods</p>
+        <div class="offer-dates">January - March | September - November</div>
+      </div>
+      
+      <div class="membership-benefits">
+        <div class="benefit-card">
+          <div class="benefit-icon">👑</div>
+          <h4>Royal Member Deals</h4>
+          <p>Additional 15% off for loyalty members</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">🎁</div>
+          <h4>Early Booking Bonus</h4>
+          <p>Book 90+ days in advance for extra perks</p>
         </div>
       </div>
     </div>
