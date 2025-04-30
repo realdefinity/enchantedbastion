@@ -1695,6 +1695,78 @@
     .benefit-card:nth-child(1) { animation-delay: 0.4s; }
     .benefit-card:nth-child(2) { animation-delay: 0.6s; }
 
+    /* ===== NEARBY ATTRACTIONS ===== */
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .attraction-card {
+      background: rgba(30,30,30,0.8);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .attraction-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      border-color: rgba(212,175,55,0.5);
+    }
+
+    .attraction-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .attraction-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .attraction-card:hover .attraction-image img {
+      transform: scale(1.1);
+    }
+
+    .attraction-content {
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .attraction-icon {
+      position: absolute;
+      top: -30px;
+      right: 20px;
+      background: rgba(212,175,55,0.9);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .attraction-content h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .attraction-content p {
+      font-family: 'EB Garamond', serif;
+      color: var(--parchment);
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
     </style>
 </head>
 <body>
@@ -1830,7 +1902,87 @@
     </div>
   </div>
 </section>
+<!-- ===== NEARBY ATTRACTIONS SECTION ===== -->
+<section class="new-section" id="attractions">
+  <div class="section-header">
+    <h2 class="section-title">Nearby Attractions</h2>
+    <p class="section-subtitle">EXPLORE THE LOIRE VALLEY</p>
+  </div>
 
+  <div class="attractions-grid">
+    <!-- Château de Chenonceau -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/chenonceau.jpg" alt="Château de Chenonceau">
+      </div>
+      <div class="attraction-content">
+        <h3>Château de Chenonceau</h3>
+        <p>12km - The "Ladies' Castle" spanning the River Cher</p>
+        <div class="attraction-icon">🏰</div>
+      </div>
+    </div>
+
+    <!-- Vouvray Vineyards -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/vouvray.jpg" alt="Vouvray Vineyards">
+      </div>
+      <div class="attraction-content">
+        <h3>Vouvray Vineyards</h3>
+        <p>8km - Renowned sparkling wine producers</p>
+        <div class="attraction-icon">🍇</div>
+      </div>
+    </div>
+
+    <!-- Forêt de Chinon -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/chinon-forest.jpg" alt="Forêt de Chinon">
+      </div>
+      <div class="attraction-content">
+        <h3>Forêt de Chinon</h3>
+        <p>5km - Ancient royal hunting forest</p>
+        <div class="attraction-icon">🌳</div>
+      </div>
+    </div>
+
+    <!-- Château de Chambord -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/chambord.jpg" alt="Château de Chambord">
+      </div>
+      <div class="attraction-content">
+        <h3>Château de Chambord</h3>
+        <p>45km - Renaissance masterpiece with double-helix staircase</p>
+        <div class="attraction-icon">🕌</div>
+      </div>
+    </div>
+
+    <!-- Tours Cathedral -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/tours-cathedral.jpg" alt="Tours Cathedral">
+      </div>
+      <div class="attraction-content">
+        <h3>Tours Cathedral</h3>
+        <p>25km - Gothic cathedral with stunning stained glass</p>
+        <div class="attraction-icon">⛪</div>
+      </div>
+    </div>
+
+    <!-- Loire River Cruises -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/example-path/loire-cruise.jpg" alt="Loire River Cruises">
+      </div>
+      <div class="attraction-content">
+        <h3>Loire River Cruises</h3>
+        <p>3km - Scenic boat tours with wine tasting</p>
+        <div class="attraction-icon">🚢</div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ===== AMENITIES SECTION ===== -->
 <section class="new-section" id="amenities">
   <div class="section-header">
