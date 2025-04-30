@@ -163,6 +163,113 @@
       z-index: -1;
     }
     
+  /* ===== BACKGROUND ===== */
+    .starfield {
+       position: fixed;
+       top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--duration) infinite ease-in-out;
+      opacity: 0;
+    }
+
+    .hero-content {
+      margin-top: 80px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+      backdrop-filter: blur(5px);
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    .staff-section {
+      padding: 100px 0;
+      position: relative;
+      background: 
+        radial-gradient(ellipse at top, rgba(27, 39, 53, 0.9) 0%, rgba(9, 10, 15, 0.95) 100%),
+        url('https://images.unsplash.com/photo-1600566752229-250ed79470b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .staff-card {
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 15px;
+      padding: 30px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      backdrop-filter: blur(5px);
+    }
+
+    .staff-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border-color: var(--gold);
+    }
+
+    .staff-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      margin: 0 auto 20px;
+      display: block;
+    }
+
+    .staff-name {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .staff-position {
+      color: var(--ivory);
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .staff-bio {
+      color: var(--ivory);
+      line-height: 1.6;
+    }
+
+    @keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: var(--opacity); transform: scale(1); }
+}
+
     /* ===== ANIMATIONS ===== */
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0) scale(1); }
@@ -188,6 +295,13 @@
     </style>
 </head>
 <body>
+
+  <!-- Fixed Header -->
+<header class="header">
+  <h1>The Enchanted Bastion</h1>
+</header>
+  <!--  Background -->
+<div class="starfield" id="starfield"></div>
   <!-- ===== COMPONENTS ===== -->
   <!-- Preloader -->
   <div class="preloader" data-component="preloader">
@@ -245,6 +359,44 @@
 
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
+
+  // Create twinkling stars
+    function createStars() {
+      const starfield = document.getElementById('starfield');
+      const starCount = 200;
+  
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+    
+        // Random properties
+        const size = Math.random() * 2 + 0.5;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const opacity = Math.random() * 0.7 + 0.1;
+        const duration = Math.random() * 5 + 3;
+        const delay = Math.random() * 5;
+    
+        star.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          left: ${x}%;
+          top: ${y}%;
+          --opacity: ${opacity};
+          --duration: ${duration}s;
+          animation-delay: ${delay}s;
+        `;
+    
+        starfield.appendChild(star);
+      }
+    }
+
+// Call this in your App.init()
+document.addEventListener('DOMContentLoaded', () => {
+  createStars();
+  App.init();
+});
+
   // ===== CORE MODULES =====
   const App = {
     // Initialize all components
@@ -448,5 +600,33 @@ App.components.hero = {
   // Start the app
   document.addEventListener('DOMContentLoaded', () => App.init());
 </script>
+
+<!-- Staff Section -->
+<section class="staff-section" id="staff">
+  <div class="container">
+    <h2 class="section-title">Our Distinguished Staff</h2>
+    
+    <div class="staff-grid">
+      <!-- Staff Member 1 -->
+      <div class="staff-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Staff Member" class="staff-photo">
+        <h3 class="staff-name">Jean-Luc Dubois</h3>
+        <p class="staff-position">Head Concierge</p>
+        <p class="staff-bio">With over 15 years in luxury hospitality, Jean-Luc ensures every guest's stay is flawless. Fluent in 5 languages.</p>
+      </div>
+      
+      <!-- Staff Member 2 -->
+      <div class="staff-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Staff Member" class="staff-photo">
+        <h3 class="staff-name">Sophie Laurent</h3>
+        <p class="staff-position">Executive Chef</p>
+        <p class="staff-bio">Michelin-star trained chef specializing in modern French cuisine with local Loire Valley ingredients.</p>
+      </div>
+      
+      <!-- Add more staff cards as needed -->
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
