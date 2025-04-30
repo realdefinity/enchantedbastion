@@ -839,6 +839,27 @@ App.components.hero = {
 };
   // Start the app
   document.addEventListener('DOMContentLoaded', () => App.init());
+
+      // Scroll animations for staff section
+    function initStaffAnimations() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      initStaffAnimations();
+    });
+
 </script>
 
 <!-- Staff Section -->
