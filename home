@@ -794,9 +794,88 @@
             <span class="salary">€55,000</span>
           </li>
         </ul>
+<!-- Enhanced Staff Summary -->
+<div class="employee-summary">
+  <div class="summary-header">
+    <h3 class="summary-title">Staffing Excellence</h3>
+    <div class="summary-divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">✨</div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+  
+  <div class="summary-grid">
+    <div class="summary-item" data-delay="100">
+      <div class="summary-value" id="employeeRatio">1.56</div>
+      <div class="summary-label">Employees Per Room</div>
+      <div class="summary-progress">
+        <div class="progress-bar" style="width: 78%"></div>
+      </div>
+    </div>
+    
+    <div class="summary-item" data-delay="200">
+      <div class="summary-value" id="totalEmployees">136</div>
+      <div class="summary-label">Total Staff Members</div>
+      <div class="summary-progress">
+        <div class="progress-bar" style="width: 92%"></div>
+      </div>
+    </div>
+    
+    <div class="summary-item" data-delay="300">
+      <div class="summary-value" id="serviceCoverage">24/7</div>
+      <div class="summary-label">Service Coverage</div>
+      <div class="summary-progress">
+        <div class="progress-bar" style="width: 100%"></div>
+      </div>
+    </div>
+    
+    <div class="summary-item" data-delay="400">
+      <div class="summary-value" id="guestRatio">3:1</div>
+      <div class="summary-label">Guest to Staff Ratio</div>
+      <div class="summary-progress">
+        <div class="progress-bar" style="width: 85%"></div>
       </div>
     </div>
   </div>
+  <div class="salary-stats">
+    <div class="salary-stat" data-delay="500">
+      <div class="stat-icon">💰</div>
+      <div class="stat-content">
+        <div class="salary-stat-title">Average Salary</div>
+        <div class="salary-stat-value">€48,750</div>
+      </div>
+      <div class="stat-sparkle"></div>
+    </div>
+    
+    <div class="salary-stat" data-delay="550">
+      <div class="stat-icon">🏦</div>
+      <div class="stat-content">
+        <div class="salary-stat-title">Annual Payroll</div>
+        <div class="salary-stat-value">€6.63M</div>
+      </div>
+      <div class="stat-sparkle"></div>
+    </div>
+    
+    <div class="salary-stat" data-delay="600">
+      <div class="stat-icon">🛡️</div>
+      <div class="stat-content">
+        <div class="salary-stat-title">Benefits Budget</div>
+        <div class="salary-stat-value">€1.2M</div>
+      </div>
+      <div class="stat-sparkle"></div>
+    </div>
+    
+    <div class="salary-stat" data-delay="650">
+      <div class="stat-icon">🎓</div>
+      <div class="stat-content">
+        <div class="salary-stat-title">Training Budget</div>
+        <div class="salary-stat-value">€350K</div>
+      </div>
+      <div class="stat-sparkle"></div>
+    </div>
+  </div>
+</div>
 </section>
 
 <script>
