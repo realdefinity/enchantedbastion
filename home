@@ -3105,7 +3105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <section class="staff-section" id="staff">
   <div class="staff-container">
     <div class="section-header">
-      <h2 class="section-title">Our Royal Attendants</h2>
+      <h2 class="section-title">Work Force</h2>
       <p class="section-subtitle">136 dedicated professionals serving your every need</p>
     </div>
     
