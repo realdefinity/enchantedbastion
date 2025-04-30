@@ -1753,7 +1753,381 @@
       opacity: 0.9;
       line-height: 1.6;
     }
+    /* ===== PROMO CARD STYLES ===== */
+    .promo-card {
+      background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(18,18,18,0.98));
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin: 3rem 0;
+      border: 1px solid rgba(212,175,55,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
+    .promo-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .promo-card:nth-child(1) { transition-delay: 0.2s; }
+    .promo-card:nth-child(2) { transition-delay: 0.4s; }
+    .promo-card:nth-child(3) { transition-delay: 0.6s; }
+
+    .promo-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+      border-color: rgba(212,175,55,0.4);
+    }
+
+    .promo-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .promo-icon {
+      font-size: 3rem;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(212,175,55,0.1);
+      border-radius: 50%;
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: all 0.5s ease;
+    }
+
+    .promo-card:hover .promo-icon {
+      transform: scale(1.1) rotate(10deg);
+      background: rgba(212,175,55,0.2);
+      box-shadow: 0 0 20px rgba(212,175,55,0.3);
+    }
+
+    .promo-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .promo-subtitle {
+      font-family: 'EB Garamond', serif;
+      color: var(--gold-light);
+      font-style: italic;
+      letter-spacing: 0.1em;
+    }
+
+    .promo-image-container {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transform: perspective(1000px) rotateX(0.5deg);
+      transition: transform 0.6s ease;
+    }
+
+    .promo-card:hover .promo-image-container {
+      transform: perspective(1000px) rotateX(0);
+    }
+
+    .promo-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 1s ease;
+    }
+
+    .promo-card:hover .promo-image {
+      transform: scale(1.03);
+    }
+
+    .promo-content {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--parchment);
+      margin-top: 1.5rem;
+    }
+
+    .promo-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Instagram Card Specific */
+    .instagram-card {
+      background: linear-gradient(135deg, rgba(25,25,25,0.95), rgba(15,15,15,0.98));
+      border: 1px solid rgba(212,175,55,0.2);
+    }
+
+    .social-post {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .social-header {
+      padding: 1.5rem;
+      background: rgba(20,20,20,0.9);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .social-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      transition: transform 0.5s ease;
+    }
+
+    .social-avatar:hover {
+      transform: scale(1.1);
+    }
+
+    .social-user {
+      flex: 1;
+    }
+
+    .username {
+      font-family: 'Cinzel', serif;
+      color: var(--ivory);
+      font-size: 1.1rem;
+    }
+
+    .location {
+      font-family: 'EB Garamond', serif;
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    .social-badge {
+      background: rgba(212,175,55,0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .verified-icon {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .post-image-container {
+      position: relative;
+    }
+
+    .post-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .like-button {
+      background: rgba(0,0,0,0.7);
+      border: none;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Cinzel', serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .like-button:hover {
+      background: rgba(212,175,55,0.3);
+    }
+
+    .heart-icon {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .like-button:hover .heart-icon {
+      color: #ff3757;
+      transform: scale(1.2);
+    }
+
+    .post-caption {
+      padding: 1.5rem;
+      background: rgba(20,20,20,0.9);
+      font-family: 'EB Garamond', serif;
+      line-height: 1.6;
+    }
+
+    .caption-username {
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      color: var(--ivory);
+    }
+
+    .post-analytics {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(20,20,20,0.9);
+      border-top: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .analytic {
+      text-align: center;
+    }
+
+    .value {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .label {
+      font-size: 0.8rem;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Video Storyboard */
+    .video-storyboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .story-cell {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--delay);
+    }
+
+    .promo-card.visible .story-cell {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-image-wrapper {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      aspect-ratio: 16/9;
+    }
+
+    .story-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .story-cell:hover .story-image {
+      transform: scale(1.1);
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(212,175,55,0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .story-cell:hover .play-icon {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .story-caption {
+      font-family: 'EB Garamond', serif;
+      text-align: center;
+      margin-top: 0.8rem;
+      color: var(--parchment);
+    }
+
+    /* CTA Button */
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid var(--gold);
+      border-radius: 50px;
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .cta-button:hover {
+      background: rgba(212,175,55,0.2);
+      box-shadow: 0 0 20px rgba(212,175,55,0.3);
+      transform: translateX(5px);
+    }
+
+    .arrow-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover .arrow-icon {
+      transform: translateX(3px);
+    }
     </style>
 </head>
 <body>
@@ -2210,6 +2584,128 @@
     </div>
   </div>
 </section>
+
+<!-- ===== ADVERTISING SECTION ===== -->
+<section class="new-section" id="promotions">
+  <div class="section-header">
+    <h2 class="section-title">Featured In</h2>
+    <p class="section-subtitle">WORLD-CLASS MEDIA COVERAGE</p>
+  </div>
+
+  <!-- Magazine Ad -->
+  <div class="promo-card">
+    <div class="card-glow"></div>
+    <div class="promo-header">
+      <div class="promo-icon">📰</div>
+      <div>
+        <h3 class="promo-title">Luxury Travel Magazine</h3>
+        <p class="promo-subtitle">Full-page feature spread</p>
+      </div>
+    </div>
+    <div class="promo-image-container">
+      <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20Full-page%20luxury%20travel%20magazine%20advertisement%20featuring%20The%20Enchanted%20Bastion%20castle%20at%20twi%20(2).jpg" 
+           alt="Magazine Feature" 
+           class="promo-image"
+           loading="lazy">
+      <div class="image-reflection"></div>
+    </div>
+    <div class="promo-content">
+      <p>Our full-page feature in <em>Luxury Travel Magazine</em> showcases the castle at golden hour, with bespoke copy highlighting our private vineyard tours and 12th-century wine cellar experiences. The ad targets affluent travelers (45-65) through high-end print distribution.</p>
+      <div class="promo-stats">
+        <div class="stat">
+          <span class="stat-value">2.1M</span>
+          <span class="stat-label">Readership</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">87%</span>
+          <span class="stat-label">Engagement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Commercial -->
+  <div class="promo-card">
+    <div class="promo-header">
+      <div class="promo-icon">🎥</div>
+      <div>
+        <h3 class="promo-title">Cinematic Commercial</h3>
+        <p class="promo-subtitle">15-second brand film</p>
+      </div>
+    </div>
+    <div class="video-storyboard">
+      <div class="story-cell" style="--delay: 0.1s">
+        <div class="story-image-wrapper">
+          <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20%20A%20breathtaking%2012th-century%20stone%20castle%20at%20dawn,%20surrounded%20by%20misty%20vineyards,%20with%20golde.jpg" 
+               alt="Dawn Shot" 
+               class="story-image"
+               loading="lazy">
+          <div class="play-icon">▶</div>
+        </div>
+        <p class="story-caption">Sunrise reveal</p>
+      </div>
+      <!-- 5 more story cells with different images -->
+    </div>
+    <div class="promo-content">
+      <p>Our cinematic commercial targets younger luxury seekers (25-45) with quick cuts between experiences. The drone shots of the castle paired with our "Live Your Fairy Tale" tagline achieved a 32% higher engagement than industry benchmarks.</p>
+      <div class="cta-button">
+        <span>Watch on YouTube</span>
+        <div class="arrow-icon">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instagram Campaign -->
+  <div class="promo-card instagram-card">
+    <div class="promo-header">
+      <div class="promo-icon">📱</div>
+      <div>
+        <h3 class="promo-title">Influencer Takeover</h3>
+        <p class="promo-subtitle">@TravelWithSophie</p>
+      </div>
+    </div>
+    <div class="social-post">
+      <div class="social-header">
+        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20stylish%20female%20travel%20influencer%20(age%2028-35)%20smiling%20confidently%20with%20a%20medieval%20castle%20an.jpg" 
+             class="social-avatar"
+             loading="lazy">
+        <div class="social-user">
+          <span class="username">@TravelWithSophie</span>
+          <span class="location">The Enchanted Bastion</span>
+        </div>
+        <div class="social-badge">
+          <span class="verified-icon">✓</span>
+          <span>Collaboration</span>
+        </div>
+      </div>
+      <div class="post-image-container">
+        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20A%20stylish%20female%20travel%20influencer%20(age%2028-35)%20smiling%20confidently%20with%20a%20medieval%20castle%20an.jpg" 
+             class="post-image"
+             loading="lazy">
+        <div class="image-overlay">
+          <div class="like-button">
+            <span class="heart-icon">♥</span>
+            <span class="like-count">12.4k</span>
+          </div>
+        </div>
+      </div>
+      <div class="post-caption">
+        <span class="caption-username">@TravelWithSophie</span>
+        ✨ Swipe up to tour my actual tower suite at @EnchantedBastion! This 12th-century castle has modern luxury hidden in every stone corridor. #CastleGoals
+      </div>
+      <div class="post-analytics">
+        <div class="analytic">
+          <span class="value">1.2M</span>
+          <span class="label">Reach</span>
+        </div>
+        <div class="analytic">
+          <span class="value">9.8%</span>
+          <span class="label">Engagement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
   // Create twinkling stars
@@ -2393,7 +2889,57 @@ document.addEventListener('DOMContentLoaded', function() {
   slideshowContainer.addEventListener('mouseenter', stopSlideshow);
   slideshowContainer.addEventListener('mouseleave', startSlideshow);
 });
+// Add this to your existing <script> section
+  document.addEventListener('DOMContentLoaded', () => {
+  // Animate promo cards on scroll
+  const promoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
 
+  document.querySelectorAll('.promo-card').forEach(card => {
+    promoObserver.observe(card);
+  });
+
+  // Instagram like button interaction
+  const likeButton = document.querySelector('.like-button');
+  if (likeButton) {
+    likeButton.addEventListener('click', function() {
+      this.classList.toggle('liked');
+      const heart = this.querySelector('.heart-icon');
+      const count = this.querySelector('.like-count');
+      
+      if (this.classList.contains('liked')) {
+        heart.textContent = '♥';
+        heart.style.color = '#ff3757';
+        count.textContent = (parseFloat(count.textContent) + 1) + 'k';
+        
+        // Add animation
+        heart.style.transform = 'scale(1.3)';
+        setTimeout(() => {
+          heart.style.transform = 'scale(1)';
+        }, 300);
+      } else {
+        heart.textContent = '♡';
+        heart.style.color = '';
+      }
+    });
+  }
+
+  // Video storyboard hover effects
+  document.querySelectorAll('.story-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+      cell.querySelector('.story-image').style.transform = 'scale(1.05)';
+    });
+    
+    cell.addEventListener('mouseleave', () => {
+      cell.querySelector('.story-image').style.transform = 'scale(1)';
+    });
+  });
+});
 </script>
 
 <!-- Staff Section -->
