@@ -1188,7 +1188,7 @@
       const value = progress * (end - start) + start;
       element.innerHTML = isRatio 
         ? `${Math.round(value)}:1`
-        : value.toFixed(progress < 1 && end === 1.56 ? 2 : 0);
+        : value.toFixed(progress < 1 && end === 1 ? 1.56 : 0);
       if (progress < 1) {
         window.requestAnimationFrame(step);
       }
