@@ -794,7 +794,10 @@
             <span class="salary">€55,000</span>
           </li>
         </ul>
-<!-- Enhanced Staff Summary -->
+      </div>
+    </div>
+  </div>
+  <!-- Enhanced Staff Summary -->
 <div class="employee-summary">
   <div class="summary-header">
     <h3 class="summary-title">Staffing Excellence</h3>
@@ -838,6 +841,7 @@
       </div>
     </div>
   </div>
+  
   <div class="salary-stats">
     <div class="salary-stat" data-delay="500">
       <div class="stat-icon">💰</div>
