@@ -1132,13 +1132,13 @@
   <div class="slideshow-container">
     <div id="slideshow">
       <div class="slide active">
-        <img src="https://images.unsplash.com/photo-1582719471380-cd82f176b0a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Grand Hall">
+        <img src="https://media-hosting.imagekit.io/d645b533bc994e5b/screenshot_1743008709723.png?Expires=1837616710&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=g7hUoEjRWAVYmIvGTOa3OpW-KmeE3xgIi4-TXaRTfGFoV88RuCq~WZjaXLeW8rW4JTZX-DDd9oDJ7LdRPuhDGyl0Y~xM8AaSSn33othQkjk8Z1qb-OYfthhN9Tcbo5yqNfiqCQ3rurl59BS-bRIAGBM6ZHWY9ahvr2B2ByDJW~EnAq1uo7h14cdGqnsp3iZVT9w3JzVsfBQsbvTZJFAmtzGImRLwKU6rzSZvFFGsv3Facyja95nHhlyR9ziik57hclFX90uzaUZ2tHFvIylyFOkpsSDRc2faNN6L0AWiXcS8YR-n6J9oBWoHOHRXoivXk8R4J7RZB68HyA~ycjlTSA__" alt="Grand Hall">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Royal Suite">
+        <img src="https://media-hosting.imagekit.io/b38456ff27484b88/screenshot_1743008804722.png?Expires=1837616805&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Y1D1WPWmZWax7~lArR6wOSRccBYx8TdUUqeHVZAES8a~~PvRaIeZeq~GSRwn5ydeKwz4SugqIVFI5Mn6xDDGnllxYbEuE76TJwlvamrQesWnciMkBlciWP~0DQFFDH0pTvbvNti0AIm8OZp~ThN08h2kwzlU5Omo~O7RyMfHP7rKDKTCyS-HiZCMjPtubDN~giWG0gzHZX4fV8d-6D3lV9UBBndwMVoSRnBAFtge4F31dPc9v~lpBJ~WH58V-W7xsA0cnbYCqlf4NTvVKqMJBvWL6gqTnAFePF4voyO5m2cWrL8vI4p1Vumv2dNKodOIkWlkw1mQpBsC~lI1eE5ohw__" alt="Royal Suite">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Library">
+        <img src="https://media-hosting.imagekit.io/5300e5f1e0854cdc/screenshot_1743008624961.png?Expires=1837616625&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=SoxJo929BRQro7uKYBtCeWdEFo-5Px4ZpvqmhCDk2i6K32zi4XS7YRBkB0Kzn8Olv4KQrC8ELw5gwU3qvXLKULN5PbKX7Tw4ZIvNmqe2HKX3eFo4paZYcI27-euBt4YfZZtOG3CJLwWoYIRQ5fu5LoGVcv77cMBbZVdHAo17wn7GgU35avQRYBfQfCmZhjlBTZqhzSXLNZ79RYouIJU-Mi3cLK1joe3tkBDW9fiJIwOwaJHPGYg~kj7sDACneSpLgIk8SdchVMjTlOoeDYtqtc2cgBitjpgSVfzSPdNl0Y8Dbz4Dj9Dp-c1koto~woX88I~W8YquFPnMEdquCkVnOA__" alt="Library">
       </div>
     </div>
     <button class="slide-nav" id="prev-slide">❮</button>
