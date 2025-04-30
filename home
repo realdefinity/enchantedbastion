@@ -4,236 +4,188 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Enchanted Bastion | Luxury Castle Hotel</title>
-<style>
-/* ===== SMOOTH GLOBAL STYLES ===== */
-:root {
-  --gold: #d4af37;
-  --gold-light: #f8e8b0;
-  --gold-dark: #b38f2a;
-  --ivory: #f8f4e9;
-  --black: #121212;
-  --black-light: #1a1a1a;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--ivory);
-  background: var(--black);
-  overflow-x: hidden;
-  min-height: 100vh;
-  line-height: 1.6;
-}
-
-/* ===== SMOOTH HERO SECTION ===== */
-.hero-section {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: 
-    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.9)), 
-    url('https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(58,15,15,0.3) 0%, transparent 100%);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-weight: 900;
-  font-size: clamp(3rem, 10vw, 6rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: transparent;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.05em;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
-}
-
-.hero-subtitle {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-  color: var(--gold-light);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.8s;
-}
-
-.hero-cta {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  background: transparent;
-  color: var(--gold);
-  border: 2px solid var(--gold);
-  border-radius: 50px;
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards 1s;
-  text-decoration: none;
-}
-
-.hero-cta:hover {
-  background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-  transform: translateY(-5px);
-}
-
-.hero-image-container {
-  position: relative;
-  width: 80%;
-  max-width: 800px;
-  margin: 2rem auto 0;
-  perspective: 1000px;
-  opacity: 0;
-  transform: translateY(50px) scale(0.95);
-  animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.2s;
-}
-
-.hero-image-wrapper {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-}
-
-.hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transform: scale(1.05);
-  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.image-reflection {
-  position: absolute;
-  bottom: -60%;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: linear-gradient(to top, rgba(212, 175, 55, 0.1), transparent);
-  transform: scaleY(-1);
-  opacity: 0.4;
-  filter: blur(10px);
-  z-index: -1;
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards 1.5s;
-  z-index: 3;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 60px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  position: relative;
-  overflow: hidden;
-}
-
-.scroll-line::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: var(--gold);
-  animation: scrollPulse 2.5s infinite cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.scroll-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-top: 1rem;
-  color: var(--gold-light);
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { transform: translateY(0); opacity: 0.8; }
-  50% { transform: translateY(40px); opacity: 1; }
-}
-
-/* ===== GOLD DUST PARTICLES ===== */
-.gold-particle {
-  position: absolute;
-  background: var(--gold-light);
-  border-radius: 50%;
-  opacity: 0;
-  filter: blur(1px);
-  z-index: -1;
-  animation: floatParticle linear infinite;
-}
-
-@keyframes floatParticle {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-  10% { opacity: 0.3; }
-  90% { opacity: 0.3; }
-  100% { transform: translate(80px, -100vh) rotate(360deg); opacity: 0; }
-}
-</style>
+  <style>
+    /* ===== SMOOTH GLOBAL STYLES ===== */
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f8e8b0;
+      --gold-dark: #b38f2a;
+      --ivory: #f8f4e9;
+      --black: #121212;
+      --black-light: #1a1a1a;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--ivory);
+      background: var(--black);
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    
+    /* ===== EPIC COSMIC BACKGROUND ===== */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: 
+        radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%),
+        url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1491&q=80') center/cover no-repeat;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(58,15,15,0.3) 0%, transparent 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: transparent;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.5s;
+    }
+    
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+      color: var(--gold-light);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.8s;
+    }
+    
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards 1s;
+      text-decoration: none;
+      margin-top: 2rem; /* Added space between image & button */
+      z-index: 10; /* Ensures button stays above everything */
+    }
+    
+    .hero-cta:hover {
+      background: rgba(212, 175, 55, 0.1);
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+      transform: translateY(-5px);
+    }
+    
+    .hero-image-container {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      margin: 2rem auto 0;
+      perspective: 1000px;
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      animation: fadeInUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.2s;
+    }
+    
+    .hero-image-wrapper {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1.05);
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .image-reflection {
+      position: absolute;
+      bottom: -60%;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(to top, rgba(212, 175, 55, 0.1), transparent);
+      transform: scaleY(-1);
+      opacity: 0.4;
+      filter: blur(10px);
+      z-index: -1;
+    }
+    
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    /* ===== GOLD DUST PARTICLES ===== */
+    .gold-particle {
+      position: absolute;
+      background: var(--gold-light);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+      z-index: -1;
+      animation: floatParticle linear infinite;
+    }
+    
+    @keyframes floatParticle {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.3; }
+      90% { opacity: 0.3; }
+      100% { transform: translate(80px, -100vh) rotate(360deg); opacity: 0; }
+    }
+    </style>
 </head>
 <body>
   <!-- ===== COMPONENTS ===== -->
@@ -248,6 +200,7 @@ body {
   
   <!-- Hero Section -->
 <!-- ===== SMOOTH HERO SECTION ===== -->
+<!-- ===== SMOOTH HERO SECTION ===== -->
 <section class="hero-section" data-component="hero">
   <div class="hero-overlay"></div>
   
@@ -257,19 +210,14 @@ body {
     
     <div class="hero-image-container">
       <div class="hero-image-wrapper" id="heroImageWrapper">
-        <img src="https://ik.imagekit.io/xeqk7r0ly/Firefly%20Create%20a%20photorealistic%208K%20sunset%20view%20of%20a%20luxurious%2012th-century%20castle%20hotel%20in%20France's%20.jpg" 
+        <img src="https://images.unsplash.com/photo-1582719471387-9d5d25f0a15e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
              alt="The Enchanted Bastion" 
              class="hero-image">
         <div class="image-reflection"></div>
       </div>
     </div>
     
-    <a href="#explore" class="hero-cta">Begin Your Journey</a>
-  </div>
-  
-  <div class="scroll-indicator">
-    <div class="scroll-line"></div>
-    <span class="scroll-text">Scroll to Explore</span>
+    <a href="#staff" class="hero-cta">Begin Your Journey</a>
   </div>
 </section>
   
@@ -432,6 +380,7 @@ App.components.hero = {
   init(el) {
     this.createParticles(el);
     this.initParallax(el);
+    this.fixScrollBug(); // Added to prevent white flash
   },
 
   // Floating gold dust particles
@@ -478,21 +427,26 @@ App.components.hero = {
       const angleY = (centerX - x) / 20;
       
       wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-      
-      // Bonus: Dynamic shadow
-      const shadowX = (x - centerX) / 20;
-      const shadowY = (y - centerY) / 20;
-      const shadowBlur = 40 + Math.abs(shadowX) + Math.abs(shadowY);
-      wrapper.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, 0.6)`;
     });
     
     el.addEventListener('mouseleave', () => {
       wrapper.style.transform = 'rotateX(0) rotateY(0)';
-      wrapper.style.boxShadow = '0 40px 80px rgba(0, 0, 0, 0.8)';
+    });
+  },
+
+  // Fixes the white flash bug when scrolling
+  fixScrollBug() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
     });
   }
 };
-
   // Start the app
   document.addEventListener('DOMContentLoaded', () => App.init());
 </script>
