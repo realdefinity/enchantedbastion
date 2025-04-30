@@ -809,10 +809,19 @@
       position: relative;
       width: 100%;
       max-width: 900px;
+      height: 500px; /* Fixed height */
       margin: 0 auto 3rem;
-      perspective: 1500px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(212,175,55,0.3);
     }
 
+    #slideshow {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
     .slide {
       position: absolute;
       top: 0;
@@ -831,10 +840,21 @@
       opacity: 1;
     }
 
+
     .slide img {
       width: 100%;
-      height: 500px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover; /* Ensures images fill container */
+      object-position: center;
+}
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
     .slide-nav {
@@ -861,6 +881,7 @@
 
     .slide-nav:hover {
       background: rgba(212,175,55,0.3);
+      transform: translateY(-50%) scale(1.1);
     }
 
     .slide-indicators {
@@ -1101,6 +1122,7 @@
 </section>
   
 
+<!-- ===== INTERIOR SECTION ===== -->
 <section class="new-section" id="interior">
   <div class="section-header">
     <h2 class="section-title">Interior</h2>
@@ -1110,13 +1132,13 @@
   <div class="slideshow-container">
     <div id="slideshow">
       <div class="slide active">
-        <img src="https://images.unsplash.com/photo-1582719471380-cd82f176b0a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Royal Suite">
+        <img src="https://images.unsplash.com/photo-1582719471380-cd82f176b0a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Grand Hall">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="Deluxe Room">
+        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Royal Suite">
       </div>
       <div class="slide">
-        <img src="https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Tower Suite">
+        <img src="https://images.unsplash.com/photo-1536376072261-38c75010e6c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Library">
       </div>
     </div>
     <button class="slide-nav" id="prev-slide">❮</button>
@@ -1162,7 +1184,7 @@
     
     <div class="pricing-card">
       <div class="pricing-header">
-        <h3>Royal Apartment</h3>
+        <h3>Royal Suite</h3>
         <div class="price">€950<span>/night</span></div>
       </div>
       <ul class="pricing-features">
@@ -1342,15 +1364,14 @@
   });
 
 // Enhanced Slideshow Functionality
-function initSlideshow() {
+document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.slide');
   const prevBtn = document.getElementById('prev-slide');
   const nextBtn = document.getElementById('next-slide');
   const indicatorsContainer = document.querySelector('.slide-indicators');
   let currentIndex = 0;
   let slideInterval;
-  let isAnimating = false;
-  
+
   // Create indicators
   slides.forEach((_, index) => {
     const indicator = document.createElement('div');
@@ -1359,13 +1380,10 @@ function initSlideshow() {
     indicator.addEventListener('click', () => goToSlide(index));
     indicatorsContainer.appendChild(indicator);
   });
-  
+
   const indicators = document.querySelectorAll('.indicator');
-  
+
   function updateSlides() {
-    if (isAnimating) return;
-    isAnimating = true;
-    
     slides.forEach((slide, index) => {
       slide.classList.toggle('active', index === currentIndex);
     });
@@ -1373,57 +1391,53 @@ function initSlideshow() {
     indicators.forEach((indicator, index) => {
       indicator.classList.toggle('active', index === currentIndex);
     });
-    
-    setTimeout(() => { isAnimating = false; }, 800);
   }
-  
+
   function nextSlide() {
     currentIndex = (currentIndex + 1) % slides.length;
     updateSlides();
   }
-  
+
   function prevSlide() {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateSlides();
   }
-  
+
   function goToSlide(index) {
     currentIndex = index;
     updateSlides();
   }
-  
+
   function startSlideshow() {
     slideInterval = setInterval(nextSlide, 5000);
   }
-  
+
   function stopSlideshow() {
     clearInterval(slideInterval);
   }
-  
+
   // Event listeners
   nextBtn.addEventListener('click', () => {
     nextSlide();
     stopSlideshow();
     startSlideshow();
   });
-  
+
   prevBtn.addEventListener('click', () => {
     prevSlide();
     stopSlideshow();
     startSlideshow();
   });
-  
+
   // Start slideshow
   startSlideshow();
-  
-  // Pause on hover
-  const slideshow = document.querySelector('.slideshow-container');
-  slideshow.addEventListener('mouseenter', stopSlideshow);
-  slideshow.addEventListener('mouseleave', startSlideshow);
-}
 
-// Initialize when DOM loads
-document.addEventListener('DOMContentLoaded', initSlideshow);
+  // Pause on hover
+  const slideshowContainer = document.querySelector('.slideshow-container');
+  slideshowContainer.addEventListener('mouseenter', stopSlideshow);
+  slideshowContainer.addEventListener('mouseleave', startSlideshow);
+});
+
 </script>
 
 <!-- Staff Section -->
