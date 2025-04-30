@@ -1174,8 +1174,8 @@
       -webkit-background-clip: text;
       background-clip: text;
       text-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.3),
-        0 0 15px rgba(212, 175, 55, 0.3);
+        0 2px 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.4);
     }
 
     .title-line {
@@ -1186,6 +1186,13 @@
       transform: translateY(30px);
       opacity: 0;
       animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transition: all 0.3s ease;
+    }
+
+    .concept-title:hover .title-line {
+      text-shadow: 
+        0 0 20px rgba(212, 175, 55, 0.8),
+        0 0 40px rgba(212, 175, 55, 0.3);
     }
 
     .title-line:nth-child(1) {
