@@ -328,6 +328,7 @@
   }
 }
 
+
     /* ===== ENHANCED STAFF CARDS ===== */
     .employee-structure {
       display: grid;
@@ -485,7 +486,262 @@
       font-size: 0.9em;
       opacity: 0.9;
     }
+    /* ===== LUXURY SUMMARY SECTION ===== */
+    .employee-summary {
+      margin-top: 5rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(18,18,18,0.98) 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 
+                  inset 0 0 0 1px rgba(212, 175, 55, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
 
+    .employee-summary.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .employee-summary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, 
+        rgba(212, 175, 55, 0.03) 0%, 
+        transparent 50%);
+      pointer-events: none;
+    }
+
+    .summary-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .summary-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.2rem;
+      color: transparent;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .summary-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0 auto;
+      max-width: 400px;
+    }
+
+    .divider-line {
+      height: 1px;
+      flex-grow: 1;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(212, 175, 55, 0.5) 50%, 
+        transparent 100%);
+    }
+
+    .divider-icon {
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .summary-item {
+      text-align: center;
+      position: relative;
+      padding: 1.5rem 1rem;
+      background: rgba(20, 20, 20, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .employee-summary.visible .summary-item {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .summary-item:hover {
+      transform: translateY(-5px) scale(1.03) !important;
+      background: rgba(25, 25, 25, 0.8);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4),
+                  0 0 0 1px rgba(212, 175, 55, 0.2);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .summary-value {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+
+    .summary-item:hover .summary-value {
+      transform: scale(1.1);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .summary-label {
+      font-size: 0.95rem;
+      color: var(--parchment);
+      opacity: 0.8;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .summary-item:hover .summary-label {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .summary-progress {
+      height: 4px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 0 auto;
+      max-width: 150px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, 
+        var(--gold-dark) 0%, 
+        var(--gold) 50%, 
+        var(--gold-light) 100%);
+      transition: width 1.5s ease-out;
+    }
+
+    /* Salary Stats */
+    .salary-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .salary-stat {
+      background: linear-gradient(135deg, rgba(25,25,25,0.9) 0%, rgba(15,15,15,0.95) 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    .employee-summary.visible .salary-stat {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .salary-stat:hover {
+      transform: translateY(-5px) scale(1.03) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4),
+                  0 0 0 1px rgba(212, 175, 55, 0.25);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .stat-icon {
+      font-size: 1.8rem;
+      color: var(--gold);
+      min-width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .salary-stat:hover .stat-icon {
+      transform: scale(1.2);
+      background: rgba(212, 175, 55, 0.2);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .stat-content {
+      flex-grow: 1;
+    }
+
+    .salary-stat-title {
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .salary-stat-value {
+      font-size: 1.6rem;
+      color: var(--ivory);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-sparkle {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle at center, 
+        rgba(212, 175, 55, 0.1) 0%, 
+        transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .salary-stat:hover .stat-sparkle {
+      opacity: 1;
+    }
+
+    /* Animation Delays */
+    .summary-item:nth-child(1) { transition-delay: 0.1s; }
+    .summary-item:nth-child(2) { transition-delay: 0.2s; }
+    .summary-item:nth-child(3) { transition-delay: 0.3s; }
+    .summary-item:nth-child(4) { transition-delay: 0.4s; }
+
+    .salary-stat:nth-child(1) { transition-delay: 0.5s; }
+    .salary-stat:nth-child(2) { transition-delay: 0.6s; }
+    .salary-stat:nth-child(3) { transition-delay: 0.7s; }
+    .salary-stat:nth-child(4) { transition-delay: 0.8s; }
     </style>
 </head>
 <body>
