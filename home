@@ -260,17 +260,15 @@
     }
 
     .department-card {
-      background: rgba(30, 30, 30, 0.8);
-      border-radius: 16px;
-      padding: 2rem;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-      transform: translateY(30px);
-      opacity: 0;
-      perspective: 1000px;
-      transform-style: preserve-3d;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity, box-shadow;
+}
+
+.department-card:hover {
+  transform: translateY(-10px) translateZ(30px) !important;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6), 
+              0 0 0 1px rgba(212, 175, 55, 0.4) !important;
+}
 
     .department-card.visible {
       transform: translateY(0);
@@ -284,10 +282,6 @@
     .department-card:nth-child(5) { transition-delay: 0.5s; }
     .department-card:nth-child(6) { transition-delay: 0.6s; }
 
-    .department-card:hover {
-      transform: translateY(-10px) translateZ(20px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(212, 175, 55, 0.3);
-    }
 
     /* Department Header */
     .department-header {
@@ -506,33 +500,102 @@
       }
     }
 
-    @keyframes twinkle {
-  0%, 100% { opacity: 0; transform: scale(0.5); }
-  50% { opacity: var(--opacity); transform: scale(1); }
-}
+    /* ===== CURSOR ===== */
+    html {
+      cursor: none;
+    }
+
+    .cursor-ring {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: difference;
+      transition: 
+        transform 0.3s ease,
+        width 0.3s ease,
+        height 0.3s ease,
+        background 0.3s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: var(--gold-light);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+    }
+
+    /* Cursor hover states */
+    a:hover ~ .cursor-ring,
+    button:hover ~ .cursor-ring,
+    .department-card:hover ~ .cursor-ring {
+      transform: translate(-50%, -50%) scale(1.5);
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--gold-light);
+    }
+
+    .hero-cta:hover ~ .cursor-ring {
+      transform: translate(-50%, -50%) scale(2);
+      background: rgba(212, 175, 55, 0.3);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    .department-card {
+      will-change: transform, box-shadow;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    .gold-particle {
+      will-change: transform, opacity;
+      animation: floatParticle linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatParticle {
+      0%, 100% { 
+        transform: translate(0, 0) rotate(0deg); 
+        opacity: 0; 
+      }
+      20% { opacity: 0.4; }
+      80% { opacity: 0.4; }
+      100% { 
+        transform: translate(random(200) - 100px, -100vh) rotate(360deg); 
+        opacity: 0; 
+      }
+    }
+
+        @keyframes twinkle {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: var(--opacity); transform: scale(1); }
+    }
 
     /* ===== ANIMATIONS ===== */
     @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    
-    /* ===== GOLD DUST PARTICLES ===== */
-    .gold-particle {
-      position: absolute;
-      background: var(--gold-light);
-      border-radius: 50%;
-      opacity: 0;
-      filter: blur(1px);
-      z-index: -1;
-      animation: floatParticle linear infinite;
-    }
-    
-    @keyframes floatParticle {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.3; }
-      90% { opacity: 0.3; }
-      100% { transform: translate(80px, -100vh) rotate(360deg); opacity: 0; }
-    }
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.98);
+    filter: blur(2px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
     </style>
 </head>
 <body>
@@ -635,20 +698,33 @@
     const hero = document.querySelector('.hero-section');
     if (hero) {
       const wrapper = hero.querySelector('#heroImageWrapper');
-      if (wrapper) {
+      const imageContainer = hero.querySelector('.hero-image-container');
+      
+      if (wrapper && imageContainer) {
         hero.addEventListener('mousemove', (e) => {
-          const rect = hero.getBoundingClientRect();
+          // Only tilt when mouse is over the image container
+          const rect = imageContainer.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const angleX = (y - centerY) / 20;
-          const angleY = (centerX - x) / 20;
-          wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+          
+          // Check if mouse is within image bounds
+          if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angleX = (y - centerY) / 30; // Reduced sensitivity
+            const angleY = (centerX - x) / 30; // Reduced sensitivity
+            
+            wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            wrapper.style.transition = 'transform 0.1s linear';
+          } else {
+            wrapper.style.transform = 'rotateX(0) rotateY(0)';
+            wrapper.style.transition = 'transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)';
+          }
         });
         
         hero.addEventListener('mouseleave', () => {
           wrapper.style.transform = 'rotateX(0) rotateY(0)';
+          wrapper.style.transition = 'transform 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28)';
         });
       }
     }
@@ -972,6 +1048,33 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Custom Gold Ring Cursor
+  document.addEventListener('DOMContentLoaded', () => {
+    const cursorRing = document.createElement('div');
+    const cursorDot = document.createElement('div');
+    cursorRing.classList.add('cursor-ring');
+    cursorDot.classList.add('cursor-dot');
+    document.body.appendChild(cursorRing);
+    document.body.appendChild(cursorDot);
+    
+    document.addEventListener('mousemove', (e) => {
+      cursorRing.style.left = `${e.clientX}px`;
+      cursorRing.style.top = `${e.clientY}px`;
+      cursorDot.style.left = `${e.clientX}px`;
+      cursorDot.style.top = `${e.clientY}px`;
+    });
+    
+    // Make click effect
+    document.addEventListener('click', () => {
+      cursorRing.style.transform = `translate(-50%, -50%) scale(0.8)`;
+      setTimeout(() => {
+        cursorRing.style.transform = `translate(-50%, -50%) scale(1)`;
+      }, 100);
+    });
+  });
+</script>
 
 </body>
 </html>
