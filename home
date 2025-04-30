@@ -1686,7 +1686,7 @@
     .guest-card:nth-child(3) { animation-delay: 0.7s; }
     .benefit-card:nth-child(1) { animation-delay: 0.4s; }
     .benefit-card:nth-child(2) { animation-delay: 0.6s; }
-    
+
     </style>
 </head>
 <body>
@@ -1905,9 +1905,11 @@
     </div>
     
     <div class="classification-content">
-      <div class="classification-badge">
-        <div class="badge-icon">🏆</div>
-        <div class="badge-text">Full Service</div>
+      <div class="classification-badge-container">
+        <div class="classification-badge">
+          <div class="badge-icon">🏆</div>
+          <div class="badge-text">Full Service</div>
+        </div>
       </div>
       
       <div class="classification-features">
