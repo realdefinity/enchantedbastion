@@ -13,6 +13,7 @@
       --ivory: #f8f4e9;
       --black: #121212;
       --black-light: #1a1a1a;
+      --parchment: #f8f4e9; 
     }
     
     * {
@@ -542,16 +543,7 @@
 </header>
   <!--  Background -->
 <div class="starfield" id="starfield"></div>
-  <!-- ===== COMPONENTS ===== -->
-  <!-- Preloader -->
-  <div class="preloader" data-component="preloader">
-    <div class="preloader-logo">The Enchanted Bastion</div>
-    <div class="preloader-spinner"></div>
-  </div>
-  
-  <!-- Cursor -->
-  <div class="gold-cursor" data-component="cursor"></div>
-  
+ 
 <!-- ===== HERO SECTION ===== -->
 <section class="hero-section" data-component="hero">
   <div class="hero-overlay"></div>
@@ -589,199 +581,81 @@
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
 
+<script>
   // Create twinkling stars
-    function createStars() {
-      const starfield = document.getElementById('starfield');
-      const starCount = 200;
+  function createStars() {
+    const starfield = document.getElementById('starfield');
+    const starCount = 200;
+
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
   
-      for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-    
-        // Random properties
-        const size = Math.random() * 2 + 0.5;
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        const opacity = Math.random() * 0.7 + 0.1;
-        const duration = Math.random() * 5 + 3;
-        const delay = Math.random() * 5;
-    
-        star.style.cssText = `
-          width: ${size}px;
-          height: ${size}px;
-          left: ${x}%;
-          top: ${y}%;
-          --opacity: ${opacity};
-          --duration: ${duration}s;
-          animation-delay: ${delay}s;
-        `;
-    
-        starfield.appendChild(star);
-      }
-    }
-
-// Call this in your App.init()
-document.addEventListener('DOMContentLoaded', () => {
-  createStars();
-  App.init();
-});
-
-  // ===== CORE MODULES =====
-  const App = {
-    // Initialize all components
-    init() {
-      // Load components
-      document.querySelectorAll('[data-component]').forEach(el => {
-        const component = el.getAttribute('data-component');
-        if (this.components[component]) {
-          this.components[component].init(el);
-        }
-      });
-      
-      // Initialize animations
-      this.initAnimations();
-    },
-    
-    // Component registry
-    components: {
-      // ===== HERO COMPONENT =====
-      hero: {
-        init(el) {
-          this.initParallax(el);
-        },
-        initParallax(el) {
-          const wrapper = el.querySelector('#heroImageWrapper');
-          if (!wrapper) return;
-          
-          el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const angleX = (y - centerY) / 20;
-            const angleY = (centerX - x) / 20;
-            
-            wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-          });
-          
-          el.addEventListener('mouseleave', () => {
-            wrapper.style.transform = 'rotateX(0) rotateY(0)';
-          });
-        }
-      },
-      
-      // ===== PRELOADER COMPONENT =====
-      preloader: {
-        init(el) {
-          setTimeout(() => {
-            el.classList.add('fade-out');
-            setTimeout(() => el.remove(), 1000);
-          }, 1500);
-        }
-      },
-      
-      // ===== CURSOR COMPONENT =====
-      cursor: {
-        init(el) {
-          let mouseX = 0, mouseY = 0;
-          let cursorX = 0, cursorY = 0;
-          const speed = 0.15;
-          
-          const animate = () => {
-            const dx = mouseX - cursorX;
-            const dy = mouseY - cursorY;
-            cursorX += dx * speed;
-            cursorY += dy * speed;
-            el.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-            requestAnimationFrame(animate);
-          };
-          
-          document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-          });
-          
-          animate();
-        }
-      },
-      
-    // Animation system
-    initAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      document.querySelectorAll('[data-animate]').forEach(el => {
-        observer.observe(el);
-      });
-// ===== SMOOTH HERO COMPONENT =====
-App.components.hero = {
-  init(el) {
-    this.createParticles(el);
-    this.initParallax(el);
-    this.fixScrollBug(); // Added to prevent white flash
-  },
-
-  // Floating gold dust particles
-  createParticles(el) {
-    const particleCount = Math.min(Math.floor(window.innerWidth / 20), 60);
-    
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('gold-particle');
-      
       // Random properties
-      const size = Math.random() * 4 + 1;
-      const posX = Math.random() * window.innerWidth;
-      const duration = Math.random() * 15 + 10;
+      const size = Math.random() * 2 + 0.5;
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const opacity = Math.random() * 0.7 + 0.1;
+      const duration = Math.random() * 5 + 3;
       const delay = Math.random() * 5;
-      const opacity = Math.random() * 0.3 + 0.1;
-      
-      particle.style.cssText = `
+  
+      star.style.cssText = `
         width: ${size}px;
         height: ${size}px;
-        left: ${posX}px;
-        animation: floatParticle ${duration}s linear ${delay}s infinite;
-        opacity: ${opacity};
+        left: ${x}%;
+        top: ${y}%;
+        --opacity: ${opacity};
+        --duration: ${duration}s;
+        animation-delay: ${delay}s;
       `;
-      
-      el.appendChild(particle);
+  
+      starfield.appendChild(star);
     }
-  },
+  }
 
-  // Mouse-tilt effect on castle image
-  initParallax(el) {
-    const wrapper = el.querySelector('#heroImageWrapper');
-    if (!wrapper) return;
-    
-    el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const angleX = (y - centerY) / 20;
-      const angleY = (centerX - x) / 20;
-      
-      wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      wrapper.style.transform = 'rotateX(0) rotateY(0)';
-    });
-  },
+  // Initialize animations for staff section
+  function initStaffAnimations() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
 
-  // Fixes the white flash bug when scrolling
-  fixScrollBug() {
+    document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Start everything when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    createStars();
+    initStaffAnimations();
+    
+    // Initialize hero parallax effect
+    const hero = document.querySelector('.hero-section');
+    if (hero) {
+      const wrapper = hero.querySelector('#heroImageWrapper');
+      if (wrapper) {
+        hero.addEventListener('mousemove', (e) => {
+          const rect = hero.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const angleX = (y - centerY) / 20;
+          const angleY = (centerX - x) / 20;
+          wrapper.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+        });
+        
+        hero.addEventListener('mouseleave', () => {
+          wrapper.style.transform = 'rotateX(0) rotateY(0)';
+        });
+      }
+    }
+    
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -791,31 +665,16 @@ App.components.hero = {
         });
       });
     });
-  }
-};
-  // Start the app
-  document.addEventListener('DOMContentLoaded', () => App.init());
-
-      // Scroll animations for staff section
-    function initStaffAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(el => {
-        observer.observe(el);
-      });
+    
+    // Remove preloader after delay
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => preloader.remove(), 1000);
+      }, 1500);
     }
-
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      initStaffAnimations();
-    });
-
+  });
 </script>
 
 <!-- Staff Section -->
