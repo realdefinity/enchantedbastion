@@ -1165,5 +1165,52 @@
   });
 </script>
 
+<script>
+  // Animate number counters
+  function animateCounters() {
+    const ratio = document.getElementById('employeeRatio');
+    const employees = document.getElementById('totalEmployees');
+    const ratioElement = document.getElementById('guestRatio');
+    
+    if (ratio && employees && ratioElement) {
+      // Animate from 0 to target values
+      animateValue(ratio, 0, 1.56, 1500);
+      animateValue(employees, 0, 136, 1500);
+      animateValue(ratioElement, 0, 3, 1500, true);
+    }
+  }
+  
+  function animateValue(element, start, end, duration, isRatio = false) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const value = progress * (end - start) + start;
+      element.innerHTML = isRatio 
+        ? `${Math.round(value)}:1`
+        : value.toFixed(progress < 1 && end === 1.56 ? 2 : 0);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+  
+  // Initialize when summary becomes visible
+  const summaryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        animateCounters();
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  const summary = document.querySelector('.employee-summary');
+  if (summary) {
+    summaryObserver.observe(summary);
+  }
+</script>
+
 </body>
 </html>
