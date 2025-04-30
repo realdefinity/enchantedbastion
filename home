@@ -205,7 +205,7 @@
       margin: 0;
     }
 
-    /* ===== ENHANCED STAFF SECTION ===== */
+/* ===== ENHANCED STAFF SECTION ===== */
     .staff-section {
       position: relative;
       padding: 8rem 2rem;
@@ -600,26 +600,6 @@
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
 
-    // Scroll animations for staff section
-    function initStaffAnimations() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.section-header, .department-card, .employee-summary').forEach(el => {
-        observer.observe(el);
-      });
-    }
-
-    // Initialize when page loads
-    document.addEventListener('DOMContentLoaded', () => {
-      initStaffAnimations();
-    });
-
   // Create twinkling stars
     function createStars() {
       const starfield = document.getElementById('starfield');
@@ -860,7 +840,6 @@ App.components.hero = {
   // Start the app
   document.addEventListener('DOMContentLoaded', () => App.init());
 </script>
-</body>
 
 <!-- Staff Section -->
 <section class="staff-section" id="staff">
@@ -1160,4 +1139,5 @@ App.components.hero = {
   </div>
 </section>
 
+</body>
 </html>
