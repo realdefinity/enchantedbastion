@@ -1965,34 +1965,6 @@
       right: 20px;
     }
 
-    .like-button {
-      background: rgba(0,0,0,0.7);
-      border: none;
-      color: white;
-      padding: 0.8rem 1.2rem;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'Cinzel', serif;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .like-button:hover {
-      background: rgba(212,175,55,0.3);
-    }
-
-    .heart-icon {
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .like-button:hover .heart-icon {
-      color: #ff3757;
-      transform: scale(1.2);
-    }
-
     .post-caption {
       padding: 1.5rem;
       background: rgba(20,20,20,0.9);
