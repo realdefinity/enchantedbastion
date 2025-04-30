@@ -580,8 +580,6 @@
 
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
-
-<script>
   // Create twinkling stars
   function createStars() {
     const starfield = document.getElementById('starfield');
