@@ -1164,16 +1164,10 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 4rem;
-      color: transparent;
-      background: linear-gradient(
-        135deg,
-        var(--gold) 0%,
-        var(--gold-light) 50%,
-        var(--gold-dark) 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      color: white; /* Changed from gradient to solid white */
+      text-shadow: 
+        0 0 10px rgba(212, 175, 55, 0.7), /* Gold glow */
+        0 2px 4px rgba(0, 0, 0, 0.5); /* Depth shadow */
     }
 
     .title-line {
@@ -1315,7 +1309,7 @@
       opacity: 1;
     }
 
-    
+
     </style>
 </head>
 <body>
@@ -1490,8 +1484,6 @@
     <!-- Main content -->
     <div class="concept-content">
       <h2 class="concept-title">
-        <span class="title-line">The</span>
-        <span class="title-line">Enchanted</span>
         <span class="title-line">Concept</span>
       </h2>
       
