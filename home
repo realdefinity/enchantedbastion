@@ -334,56 +334,85 @@
 }
 
 
-    /* ===== ENHANCED STAFF CARDS ===== */
+    /* ===== STAFF STYLES ===== */
+    .staff-section {
+      padding: 6rem 2rem;
+      position: relative;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), rgba(5,5,5,0.98));
+    }
+
+    .staff-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
     .employee-structure {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      perspective: 1000px;
     }
 
     .department-card {
-      background: linear-gradient(135deg, 
-        rgba(30, 30, 30, 0.9) 0%, 
-        rgba(18, 18, 18, 0.95) 100%);
+      width: 320px;
+      background: linear-gradient(145deg, rgba(30,30,30,0.95), rgba(18,18,18,0.98));
       border-radius: 16px;
       padding: 2rem;
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
-                  inset 0 0 0 1px rgba(212, 175, 55, 0.05);
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      border: 1px solid rgba(212,175,55,0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       position: relative;
       overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 0;
+      transform: translateY(50px) rotateX(15deg);
+      animation: cardEntrance 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .department-card::before {
-      content: '';
+    @keyframes cardEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(50px) rotateX(15deg);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+
+    .department-card:nth-child(1) { animation-delay: 0.2s; }
+    .department-card:nth-child(2) { animation-delay: 0.4s; }
+    .department-card:nth-child(3) { animation-delay: 0.6s; }
+    .department-card:nth-child(4) { animation-delay: 0.8s; }
+
+    .card-glow {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(
-        200px circle at 80% 20%,
-        rgba(212, 175, 55, 0.03) 0%,
-        transparent 100%
-      );
-      pointer-events: none;
-    }
-
-    .department-card.visible {
-      transform: translateY(0);
-      opacity: 1;
+      background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.1), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.6s ease;
     }
 
     .department-card:hover {
-      transform: translateY(-5px) translateZ(20px) scale(1.02) !important;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 
-                  0 0 0 1px rgba(212, 175, 55, 0.4) !important;
-      border-color: rgba(212, 175, 55, 0.5);
+      transform: translateY(-10px) scale(1.03) rotateY(5deg);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5), 
+                  0 0 0 1px rgba(212,175,55,0.4);
+      border-color: rgba(212,175,55,0.5);
     }
 
-    .department-card:hover::before {
+    .department-card:hover .card-glow {
       opacity: 1;
     }
 
@@ -393,7 +422,7 @@
       gap: 1.5rem;
       margin-bottom: 1.5rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      position: relative;
     }
 
     .department-header::after {
@@ -403,10 +432,7 @@
       left: 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(212, 175, 55, 0.5) 50%, 
-        transparent 100%);
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
     }
 
     .department-icon {
@@ -416,21 +442,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(212, 175, 55, 0.1);
+      background: rgba(212,175,55,0.1);
       border-radius: 12px;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      flex-shrink: 0;
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .department-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(212, 175, 55, 0.3);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
-      inset 0 0 0 1px rgba(212, 175, 55, 0.2);
-    }
     .department-card:hover .department-icon {
-      transform: scale(1.1);
-      background: rgba(212, 175, 55, 0.2);
+      transform: scale(1.2) rotate(10deg);
+      background: rgba(212,175,55,0.2);
+      box-shadow: 0 0 20px rgba(212,175,55,0.3);
     }
 
     .department-title {
@@ -439,68 +460,73 @@
       font-size: 1.4rem;
       margin-bottom: 0.3rem;
       letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .department-card:hover .department-title {
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 10px rgba(212,175,55,0.5);
     }
 
     .employee-count {
       font-size: 0.9rem;
       color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.1);
+      background: rgba(212,175,55,0.1);
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       display: inline-block;
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(212,175,55,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .department-card:hover .employee-count {
+      background: rgba(212,175,55,0.2);
+      transform: scale(1.1);
     }
 
     .employee-list {
       list-style-type: none;
+      margin-top: 1.5rem;
     }
 
     .employee-item {
       display: flex;
       justify-content: space-between;
-      padding: 0.8rem 0;
+      padding: 1rem 0;
       position: relative;
-      transition: all 0.2s ease-out;
+      transition: all 0.4s ease;
+      border-bottom: 1px dashed rgba(212,175,55,0.1);
     }
 
-    .employee-item::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(212, 175, 55, 0.1) 50%, 
-        transparent 100%);
-    }
-
-    .department-content {
-      flex-grow: 1;
+    .employee-item:last-child {
+      border-bottom: none;
     }
 
     .employee-item:hover {
-      transform: translateX(5px);
-    }
-
-    .employee-item:hover .count {
-      transform: scale(1.1);
-    }
-
-    .employee-item:hover .position {
-      color: var(--gold-light);
+      transform: translateX(10px);
+      border-bottom-color: rgba(212,175,55,0.3);
     }
 
     .position {
       color: var(--ivory);
       flex: 1;
-      transition: color 0.2s ease;
+      transition: all 0.3s ease;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.1rem;
+    }
+
+    .employee-item:hover .position {
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+    }
+
+    .count, .salary {
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s ease;
     }
 
     .count {
       color: var(--gold);
-      font-weight: 600;
       width: 50px;
       text-align: right;
     }
@@ -510,13 +536,35 @@
       width: 100px;
       text-align: right;
       font-size: 0.9em;
-      opacity: 0.9;
     }
 
-    .employee-meta {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
+    .employee-item:hover .count,
+    .employee-item:hover .salary {
+      transform: scale(1.1);
+      text-shadow: 0 0 8px rgba(212,175,55,0.3);
+    }
+
+    /* Floating particles effect */
+    .department-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .department-card:hover::before {
+      opacity: 1;
+      animation: floatParticles 6s linear infinite;
+    }
+
+    @keyframes floatParticles {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(-100%) translateX(20%); }
     }
     /* ===== LUXURY SUMMARY SECTION ===== */
     .employee-summary {
@@ -1720,13 +1768,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <section class="staff-section" id="staff">
   <div class="staff-container">
     <div class="section-header">
-      <h2 class="section-title">Our Dedicated Staff</h2>
-      <p class="section-subtitle">136 professionals ensuring your luxury experience</p>
+      <h2 class="section-title">Our Royal Attendants</h2>
+      <p class="section-subtitle">136 dedicated professionals serving your every need</p>
     </div>
     
     <div class="employee-structure">
-      <!-- Front Office -->
       <div class="department-card">
+        <div class="card-glow"></div>
         <div class="department-header">
           <div class="department-icon">🏨</div>
           <div class="department-content">
@@ -1758,7 +1806,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </li>
         </ul>
       </div>
-      
       <!-- Housekeeping -->
       <div class="department-card">
         <div class="department-header">
