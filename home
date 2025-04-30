@@ -1910,79 +1910,56 @@
   </div>
 
   <div class="attractions-grid">
-    <!-- Château de Chenonceau -->
-    <div class="attraction-card">
-      <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/chenonceau.jpg" alt="Château de Chenonceau">
-      </div>
-      <div class="attraction-content">
-        <h3>Château de Chenonceau</h3>
-        <p>12km - The "Ladies' Castle" spanning the River Cher</p>
-        <div class="attraction-icon">🏰</div>
-      </div>
-    </div>
-
-    <!-- Vouvray Vineyards -->
-    <div class="attraction-card">
-      <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/vouvray.jpg" alt="Vouvray Vineyards">
-      </div>
-      <div class="attraction-content">
-        <h3>Vouvray Vineyards</h3>
-        <p>8km - Renowned sparkling wine producers</p>
-        <div class="attraction-icon">🍇</div>
-      </div>
-    </div>
-
-    <!-- Forêt de Chinon -->
-    <div class="attraction-card">
-      <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/chinon-forest.jpg" alt="Forêt de Chinon">
-      </div>
-      <div class="attraction-content">
-        <h3>Forêt de Chinon</h3>
-        <p>5km - Ancient royal hunting forest</p>
-        <div class="attraction-icon">🌳</div>
-      </div>
-    </div>
-
     <!-- Château de Chambord -->
     <div class="attraction-card">
       <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/chambord.jpg" alt="Château de Chambord">
+        <img src="https://media-hosting.imagekit.io/c921136c65ce4d31/OIP.jpg" alt="Château de Chambord">
       </div>
       <div class="attraction-content">
         <h3>Château de Chambord</h3>
         <p>45km - Renaissance masterpiece with double-helix staircase</p>
-        <div class="attraction-icon">🕌</div>
+        <div class="attraction-icon">🏰</div>
       </div>
     </div>
 
-    <!-- Tours Cathedral -->
+    <!-- Château de Chenonceau -->
     <div class="attraction-card">
       <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/tours-cathedral.jpg" alt="Tours Cathedral">
+        <img src="https://media-hosting.imagekit.io/183affebcc9949ed/61af1e7aec0000ef5acc1744.jpg" alt="Château de Chenonceau">
       </div>
       <div class="attraction-content">
-        <h3>Tours Cathedral</h3>
-        <p>25km - Gothic cathedral with stunning stained glass</p>
-        <div class="attraction-icon">⛪</div>
+        <h3>Château de Chenonceau</h3>
+        <p>12km - The romantic castle spanning the River Cher</p>
+        <div class="attraction-icon">🌉</div>
       </div>
     </div>
 
-    <!-- Loire River Cruises -->
+    <!-- Château d'Amboise -->
     <div class="attraction-card">
       <div class="attraction-image">
-        <img src="https://media-hosting.imagekit.io/example-path/loire-cruise.jpg" alt="Loire River Cruises">
+        <img src="https://media-hosting.imagekit.io/e0e1b68cc6f84caf/visiter-chateau-amboise.avif" alt="Château d'Amboise">
       </div>
       <div class="attraction-content">
-        <h3>Loire River Cruises</h3>
-        <p>3km - Scenic boat tours with wine tasting</p>
-        <div class="attraction-icon">🚢</div>
+        <h3>Château d'Amboise</h3>
+        <p>25km - Royal residence with breathtaking river views</p>
+        <div class="attraction-icon">👑</div>
+      </div>
+    </div>
+
+    <!-- Clos Lucé -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/47cf5c02e20c432f/LesSoufflet_fontevraudabbey_01.webp" alt="Clos Lucé">
+      </div>
+      <div class="attraction-content">
+        <h3>Clos Lucé</h3>
+        <p>30km - Leonardo da Vinci's final home and workshop</p>
+        <div class="attraction-icon">🎨</div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- ===== AMENITIES SECTION ===== -->
 <section class="new-section" id="amenities">
   <div class="section-header">
