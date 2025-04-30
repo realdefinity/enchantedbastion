@@ -43,9 +43,6 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: 
-        radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%),
-        url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1491&q=80') center/cover no-repeat;
     }
     
     .hero-overlay {
