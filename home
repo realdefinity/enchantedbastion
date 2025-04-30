@@ -1957,6 +1957,78 @@
         <div class="attraction-icon">🎨</div>
       </div>
     </div>
+
+    <!-- Château de Villandry -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/44a843d90e4e45fe/2196_thumb.v2.jpg" alt="Château de Villandry">
+      </div>
+      <div class="attraction-content">
+        <h3>Château de Villandry</h3>
+        <p>20km - Exquisite Renaissance gardens</p>
+        <div class="attraction-icon">🌿</div>
+      </div>
+    </div>
+
+    <!-- Saumur Castle -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/9e26b39a7050466c/chateau-de-saumur.jpg" alt="Saumur Castle">
+      </div>
+      <div class="attraction-content">
+        <h3>Saumur Castle</h3>
+        <p>50km - Picturesque fortress with military history</p>
+        <div class="attraction-icon">⚔️</div>
+      </div>
+    </div>
+
+    <!-- Abbaye de Fontevraud -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/423f260bdf0e42d7/screenshot_1743042898812.png" alt="Abbaye de Fontevraud">
+      </div>
+      <div class="attraction-content">
+        <h3>Abbaye de Fontevraud</h3>
+        <p>35km - Spiritual haven with monastic tradition</p>
+        <div class="attraction-icon">⛪</div>
+      </div>
+    </div>
+
+    <!-- Tours Old Town -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/f79c0de952034e92/screenshot_1743042941184.png" alt="Tours Old Town">
+      </div>
+      <div class="attraction-content">
+        <h3>Tours Old Town</h3>
+        <p>18km - Charming medieval streets and markets</p>
+        <div class="attraction-icon">🏘️</div>
+      </div>
+    </div>
+
+    <!-- Sancerre Vineyards -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/b54ade8abf404d36/le-chateau-de-cheverny.jpg" alt="Sancerre Vineyards">
+      </div>
+      <div class="attraction-content">
+        <h3>Sancerre Vineyards</h3>
+        <p>60km - World-renowned wine region</p>
+        <div class="attraction-icon">🍷</div>
+      </div>
+    </div>
+
+    <!-- Château de Cheverny -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://media-hosting.imagekit.io/291500c1e4de4cc3/thumb_193992_cover_header.jpg" alt="Château de Cheverny">
+      </div>
+      <div class="attraction-content">
+        <h3>Château de Cheverny</h3>
+        <p>40km - Well-preserved castle with timeless charm</p>
+        <div class="attraction-icon">✨</div>
+      </div>
+    </div>
   </div>
 </section>
 
