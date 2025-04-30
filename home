@@ -1092,6 +1092,230 @@
       height: 100%;
       border: none;
     }
+
+    /* ===== CONCEPT SECTION STYLING ===== */
+    .concept-section {
+      padding: 8rem 2rem;
+      position: relative;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0.9),
+        rgba(5, 5, 5, 0.95)
+      );
+      overflow: hidden;
+    }
+
+    .concept-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      padding: 4rem;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 16px;
+      background: rgba(18, 18, 18, 0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 0 1px rgba(212, 175, 55, 0.1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .concept-ornament {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4af37" d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" opacity="0.3"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .concept-ornament.top-left {
+      top: 20px;
+      left: 20px;
+    }
+
+    .concept-ornament.top-right {
+      top: 20px;
+      right: 20px;
+      transform: rotate(90deg);
+    }
+
+    .concept-ornament.bottom-left {
+      bottom: 20px;
+      left: 20px;
+      transform: rotate(270deg);
+    }
+
+    .concept-ornament.bottom-right {
+      bottom: 20px;
+      right: 20px;
+      transform: rotate(180deg);
+    }
+
+    .concept-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .concept-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 4rem;
+      color: transparent;
+      background: linear-gradient(
+        135deg,
+        var(--gold) 0%,
+        var(--gold-light) 50%,
+        var(--gold-dark) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .title-line {
+      display: block;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.2;
+      letter-spacing: 0.1em;
+      transform: translateY(30px);
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .title-line:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .title-line:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .title-line:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .concept-text-wrapper {
+      max-width: 800px;
+      margin: 0 auto 5rem;
+      position: relative;
+    }
+
+    .concept-text {
+      font-family: 'EB Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      line-height: 1.8;
+      color: var(--parchment);
+      text-align: center;
+      position: relative;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+    }
+
+    .concept-text::before,
+    .concept-text::after {
+      content: '"';
+      position: absolute;
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .concept-text::before {
+      top: 0;
+      left: 0;
+    }
+
+    .concept-text::after {
+      bottom: -1.5rem;
+      right: 0;
+    }
+
+    .concept-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .highlight-item {
+      background: rgba(25, 25, 25, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(50px);
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .highlight-item:nth-child(1) {
+      animation-delay: 1s;
+    }
+
+    .highlight-item:nth-child(2) {
+      animation-delay: 1.2s;
+    }
+
+    .highlight-item:nth-child(3) {
+      animation-delay: 1.4s;
+    }
+
+    .highlight-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      background: rgba(30, 30, 30, 0.8);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .highlight-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      transition: all 0.5s ease;
+    }
+
+    .highlight-item:hover .highlight-icon {
+      transform: scale(1.2) rotate(10deg);
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    .highlight-title {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-item:hover .highlight-title {
+      color: var(--gold-light);
+      letter-spacing: 0.1em;
+    }
+
+    .highlight-text {
+      font-family: 'EB Garamond', serif;
+      color: var(--parchment);
+      line-height: 1.6;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-item:hover .highlight-text {
+      opacity: 1;
+    }
+
+    
     </style>
 </head>
 <body>
@@ -1254,6 +1478,51 @@
   </div>
 </section>
 
+<!-- ===== CONCEPT SECTION ===== -->
+<section class="concept-section">
+  <div class="concept-container">
+    <!-- Decorative elements -->
+    <div class="concept-ornament top-left"></div>
+    <div class="concept-ornament top-right"></div>
+    <div class="concept-ornament bottom-left"></div>
+    <div class="concept-ornament bottom-right"></div>
+    
+    <!-- Main content -->
+    <div class="concept-content">
+      <h2 class="concept-title">
+        <span class="title-line">The</span>
+        <span class="title-line">Enchanted</span>
+        <span class="title-line">Concept</span>
+      </h2>
+      
+      <div class="concept-text-wrapper">
+        <p class="concept-text">
+          We resurrect the authentic soul of medieval Europe through a painstakingly restored 12th-century castle, transformed into a luxury hospitality experience where history breathes and modernity whispers.
+        </p>
+      </div>
+      
+      <div class="concept-highlights">
+        <div class="highlight-item">
+          <div class="highlight-icon">🏰</div>
+          <h3 class="highlight-title">Historical Authenticity</h3>
+          <p class="highlight-text">Every stone tells a story of centuries past</p>
+        </div>
+        
+        <div class="highlight-item">
+          <div class="highlight-icon">✨</div>
+          <h3 class="highlight-title">Modern Luxury</h3>
+          <p class="highlight-text">Contemporary comforts woven seamlessly into ancient walls</p>
+        </div>
+        
+        <div class="highlight-item">
+          <div class="highlight-icon">🕯️</div>
+          <h3 class="highlight-title">Timeless Atmosphere</h3>
+          <p class="highlight-text">Where the past and present dance in golden light</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- ===== MODULAR JAVASCRIPT ===== -->
 <script>
   // Create twinkling stars
